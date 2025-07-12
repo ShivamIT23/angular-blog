@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+:root {
+  --background: #fff;
+  --text: #222;
+}
+
+body.dark {
+  --background: #18181b;
+  --text: #fafafa;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  transition: background 0.5s, color 0.3s;
+}
