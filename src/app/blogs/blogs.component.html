@@ -1,0 +1,167 @@
+<main class="max-w-5xl mx-auto px-4 py-10 mt-24">
+    <section class="max-w-2xl mx-auto mb-10 flex flex-col items-center">
+      <h1 class="text-5xl font-bold mb-8 display text-center">
+        Together We Tell
+      </h1>
+      <p class="text-center font-medium opacity-65">
+        Dive into colorful stories and behind-the-scenes sketches shared by our
+        lively community of writers and visual storytellers.
+      </p>
+      <section class="flex gap-6 xs:gap-16 mt-8 w-full justify-center">
+        <div class="flex flex-col items-center justify-center w-16">
+          <div
+            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-purple-300 bg-purple-300/30"
+          >
+            <app-book-icon></app-book-icon>
+          </div>
+          <h3
+            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+          >
+            150+
+          </h3>
+          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
+            Blogs
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center w-16">
+          <div
+            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-blue-300 bg-blue-300/30"
+          >
+            <app-people-icon></app-people-icon>
+          </div>
+          <h3
+            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+          >
+            3K+
+          </h3>
+          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
+            Readers
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center w-16">
+          <div
+            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-green-300 bg-green-300/30"
+          >
+            <app-arrow-icon></app-arrow-icon>
+          </div>
+          <h3
+            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+          >
+            13+
+          </h3>
+          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
+            Categories
+          </p>
+        </div>
+      </section>
+    </section>
+    <div class="w-full h-10 relative rounded-4xl mb-6">
+      <input
+        type="text"
+        class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-4xl p-4"
+        [ngClass]="isInputFocused ? 'pl-4' : 'pl-10'"
+        placeholder="Search articles, authors, or topics..."
+        (focus)="isInputFocused = true"
+        (blur)="isInputFocused = false"
+      />
+      <button
+        class="absolute top-1/2 -translate-y-1/2 transition-all duration-300"
+        [ngClass]="
+          isInputFocused
+            ? 'right-2 left-auto pointer-events-auto cursor-pointer'
+            : 'left-2 right-auto pointer-events-none'
+        "
+        (mousedown)="$event.preventDefault()"
+      >
+        <app-search-icon></app-search-icon>
+      </button>
+    </div>
+  
+    <p class="flex flex-wrap gap-3 items-center mb-10">
+      <img
+        src="/category.svg"
+        alt="category"
+        class="w-6 bg-blue-100/80 rounded-full p-0.5"
+      />
+      <span class="text-sm font-medium sans">Categories:</span>
+      @for(category of categoryList; track category.name){
+      <span
+        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[12px] mono cursor-pointer"
+        [ngClass]="selectedCategory === category.name ? category.color : 'dark:bg-gray-200/40 bg-gray-400/30'"
+        (click)="selectCategory(category.name)"
+        >{{ category.name }}</span
+      >
+      }
+    </p>
+  
+    <div class="flex max-w-6xl flex-col justify-center gap-6">
+      @for (post of filteredBlogPosts; track post.id) {
+      <div
+        class="flex flex-col-reverse md:flex-row gap-1 justify-between bg-white/70 dark:bg-[#141414]/80 rounded-2xl shadow-md p-6 hover:shadow-lg transition h-fit"
+      >
+        <div class="flex-1 pr-4 @container">
+          <p
+            class="text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 mb-4"
+          >
+            {{ post.category }}
+          </p>
+          <div
+            class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 mb-3"
+          >
+            <img
+              [src]="post.authorPhoto"
+              alt="{{ post.author }}"
+              class="w-5 h-5 rounded-full"
+            />
+            <span class="dark:text-gray-200">{{ post.author }}</span>
+            <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+              >•</span
+            >
+            <span class="flex max-xxs:hidden dark:text-gray-200">{{
+              post.date
+            }}</span>
+            <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+              >•</span
+            >
+            <span class="flex max-xxs:hidden dark:text-gray-200">{{
+              post.readTime
+            }}</span>
+          </div>
+          <div
+            class="hidden max-xxs:flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 mb-3"
+          >
+            <span class="text-gray-300 dark:text-gray-500">•</span>
+            <span class="dark:text-gray-200">{{ post.date }}</span>
+            <span class="text-gray-300 dark:text-gray-500">•</span>
+            <span class="dark:text-gray-200">{{ post.readTime }}</span>
+          </div>
+          <h2
+            class="text-xl font-semibold display text-gray-800 dark:text-gray-100 mb-1.5"
+          >
+            {{ post.title }}
+          </h2>
+          <p
+            class="text-gray-600/85 dark:text-gray-300 mb-3 line-clamp-3 @md:line-clamp-2 text-[16px]"
+          >
+            {{ post.summary }}
+          </p>
+          <a
+            [routerLink]="['/blog', post.id]"
+            class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-sm"
+          >
+            Read more →
+          </a>
+          <div class="text-sm text-gray-400 dark:text-gray-500 mt-2">
+            ❤️ {{ post.likes }}
+          </div>
+        </div>
+        <img
+          [src]="post.mainImage"
+          alt="{{ post.title }}"
+          class="w-auto h-44 my-auto object-cover rounded-xl"
+        />
+      </div>
+      }
+    </div>
+  </main>
+  

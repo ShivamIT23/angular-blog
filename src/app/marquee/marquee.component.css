@@ -1,0 +1,44 @@
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  gap: 2rem;
+  animation: scroll-loop 30s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track,
+.marquee-wrapper:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  gap: 2rem;
+  animation: scroll-marquee-reverse 30s linear infinite;
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-45%);
+  }
+}
+
+@keyframes scroll-marquee-reverse {
+  0% {
+    transform: translateX(-45%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

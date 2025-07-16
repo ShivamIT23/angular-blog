@@ -1,6 +1,102 @@
 <main class="grid md:grid-cols-2 w-full h-fit">
-  <section class="bg-[#ff6f61] dark:bg-[#DAA520] w-full shadow-2xl flex justify-center h-screen relative">
-    <img src="/sign-up-form.svg" alt="register" class="h-screen aspect-square drop-shadow-2xl">
+  <section
+    class="bg-[#00ADB5] w-full shadow-2xl flex items-center justify-center min-h-screen relative"
+  >
+    <img
+      src="/sign-up-form.svg"
+      alt="register"
+      class="h-screen aspect-square drop-shadow-2xl"
+    />
   </section>
-  <section class="h-screen"></section>
+  <section
+    class="min-h-scree h-fit  py-20 flex flex-col justify-center gap-8 items-center"
+  >
+    <div
+      class="w-[90%] relative max-w-xl mx-auto min-h-[70vh] h-fit rounded-xl overflow-hidden shadow-xl"
+    >
+      <div
+        class="absolute top-0 left-0 h-2 w-full bg-gradient-to-r [background-image:linear-gradient(to_right,_#00ADB5_0%,_#00ADB5_75%,_#00ADB5_80%,_#FF6F61_85%,_#FF6F61_100%)]"
+      ></div>
+      <div
+        class="bg-[#F2F2F2] text-[#2F2F36] dark:text-[#F2F2F2] min-h-[70vh] h-fit dark:bg-[#2F2F36] rounded-b-xl p-6 flex flex-col items-center justify-center"
+      >
+        <div>
+          <h3
+            class="w-full flex justify-center mb-8 text-[#00ADB5] text-2xl font-bold"
+          >
+            Soul<span class="text-[#FF6F61]">Script</span>
+          </h3>
+          <h3 class="w-full flex justify-center text-3xl mb-2 font-bold">
+            Become a Member
+          </h3>
+          <p class="text-center text-sm font-medium opacity-50">
+            Connect with fellow writers and passionate readers
+          </p>
+        </div>
+        <form
+          class="my-10 px-[10%] gap-3 w-full flex justify-center items-start flex-col"
+        >
+          <label for="name" class="font-semibold">Full Name:</label>
+          <div class="w-full h-fit relative rounded-lg">
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-11 p-1.5 pl-8"
+            />
+            <div
+              class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
+            >
+              <img src="/person.svg" alt="p" class="w-5">
+            </div>
+          </div>
+          <label for="email" class="font-semibold">Email Address:</label>
+          <div class="w-full h-fit relative rounded-lg flex items-center mb-3">
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 h-11 placeholder-gray-500 rounded-lg shadow-xl p-1.5 pl-8"
+            />
+            <div
+              class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
+            >
+              <app-emailicon></app-emailicon>
+            </div>
+          </div>
+          <label for="password" class="font-semibold">Password:</label>
+          <div class="w-full h-fit relative rounded-lg">
+            <input
+              type="text"
+              name="password"
+              placeholder="Enter your password"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-11 p-1.5 pl-8"
+            />
+            <div
+              class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
+            >
+              <app-password-icon></app-password-icon>
+            </div>
+          </div>
+          <button
+            class="bg-[#00ADB5] drop-shadow-md text-shadow-3xl dark:text-[#2F2F36] text-[#F2F2F2] w-full text-xl font-bold shadow-xl rounded-xl p-1.5 mt-4"
+          >
+            Create Account
+          </button>
+        </form>
+        <p class="font-medium">
+          Already have an account?
+          <a href="/login" class="text-[#FF6F61] hover:underline text-lg"
+            >Login</a
+          >
+        </p>
+      </div>
+    </div>
+    <p class="font-semibold text-shadow-">
+      By continuing, you're cool with our
+      <a href="" class="text-[#FF6F61] hover:underline">[Terms of Service]</a>
+      and
+      <a href="" class="text-[#FF6F61] hover:underline">[Privacy Policy]</a>.
+    </p>
+  </section>
 </main>

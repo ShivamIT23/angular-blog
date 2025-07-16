@@ -2,14 +2,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --breakpoint-xxs: 25rem;
+  --breakpoint-xs: 30rem;
+}
+
 
 :root {
-  --background: #fff;
+  --background: #EEEEEE;
   --text: #222;
 }
 
 body.dark {
-  --background: #18181b;
+  --background: #222831;
   --text: #fafafa;
 }
 
@@ -17,4 +22,33 @@ body {
   background: var(--background);
   color: var(--text);
   transition: background 0.5s, color 0.3s;
+}
+
+.display{
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+.mono{
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hand{
+  font-family: 'Caveat', cursive;
+}
+
+.inter{
+  font-family: 'Inter', sans-serif;
+}
+
+.sans{
+  font-family: 'DM Sans', sans-serif;
+}
+
+p, label, input{
+  font-family: 'Inter', sans-serif;
+}
+
+a{
+  font-family: 'DM Sans', sans-serif;
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LaunchComponent } from './launch.component';
+import { TickIconComponent } from './tick-icon.component';
 
-describe('LaunchComponent', () => {
-  let component: LaunchComponent;
-  let fixture: ComponentFixture<LaunchComponent>;
+describe('TickIconComponent', () => {
+  let component: TickIconComponent;
+  let fixture: ComponentFixture<TickIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LaunchComponent]
+      imports: [TickIconComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LaunchComponent);
+    fixture = TestBed.createComponent(TickIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

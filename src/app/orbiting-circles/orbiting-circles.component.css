@@ -1,0 +1,21 @@
+.orbiting-container {
+    position: relative;
+    width: 0;
+    height: 0;
+    animation: spin infinite linear;
+    transform-origin: center;
+  }
+  
+  .orbiting-container.reverse {
+    animation-direction: reverse;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

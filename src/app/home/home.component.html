@@ -1,81 +1,108 @@
-<main class="max-w-5xl mx-auto px-4 py-10 mt-24">
-  <section class="max-w-2xl mx-auto mb-10 flex flex-col items-center">
-    <h1 class="text-4xl font-bold mb-8">Together We Tell</h1>
-    <p class="text-center font-medium opacity-65">
-      Dive into colorful stories and behind-the-scenes sketches shared by our
-      lively community of writers and visual storytellers.
-    </p>
-    <section class="flex gap-16 mt-8 w-full justify-center">
-      <div class="flex flex-col items-center justify-center w-16">
-        <div
-          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-purple-300 bg-purple-300/30"
-        >
-          <app-book-icon></app-book-icon>
-        </div>
-        <h3 class="text-xl mt-2 font-bold w-full pl-1 text-center relative">
-          150+
-        </h3>
-        <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-          Blogs
-        </p>
-      </div>
-      <div class="flex flex-col items-center justify-center w-16">
-        <div
-          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-blue-300 bg-blue-300/30"
-        >
-          <app-people-icon></app-people-icon>
-        </div>
-        <h3 class="text-xl mt-2 font-bold w-full pl-1 text-center relative">
-          3K+
-        </h3>
-        <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-          Readers
-        </p>
-      </div>
-      <div class="flex flex-col items-center justify-center w-16">
-        <div
-          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-green-300 bg-green-300/30"
-        >
-          <app-arrow-icon></app-arrow-icon>
-        </div>
-        <h3 class="text-xl mt-2 font-bold w-full pl-1 text-center relative">
-          10+
-        </h3>
-        <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-          Categories
-        </p>
-      </div>
-    </section>
-  </section>
-  <div class="w-full h-10 relative rounded-4xl mb-14">
-    <input
-      type="text"
-      class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-4xl p-4"
-      [ngClass]="isInputFocused ? 'pl-4' : 'pl-10'"
-      placeholder="Search articles, authors, or topics..."
-      (focus)="isInputFocused = true"
-      (blur)="isInputFocused = false"
-    />
-    <button
-      class="absolute top-1/2 -translate-y-1/2 transition-all duration-300"
-      [ngClass]="isInputFocused ? 'right-2 left-auto pointer-events-auto cursor-pointer' : 'left-2 right-auto pointer-events-none'"
-      (mousedown)="$event.preventDefault()"
+<main class="my-20 relative">
+  <section
+    class="min-h-[600px] mt-[10%] h-fit w-full flex gap-8 flex-col justify-center items-center relative"
+  >
+    <div
+      class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex h-[500px] w-full flex-col items-center justify-center overflow-hidden"
     >
-      <app-search-icon></app-search-icon>
-  </button>
-  </div>
+      <app-orbiting-circles [iconSize]="40" [radius]="225" [speed]="5">
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+      </app-orbiting-circles>
 
-  <div class="grid md:grid-cols-2 gap-6">
-    @for (post of blogPosts; track post.id) {
-    <div class="bg-white rounded-2xl shadow-md p-6 transition hover:shadow-xl">
-      <h2 class="text-xl font-semibold mb-2">{{ post.title }}</h2>
-      <p class="text-gray-600 mb-4">{{ post.description }}</p>
-      <a
-        [routerLink]="['/blog', post.id]"
-        class="text-blue-500 hover:underline font-medium"
-        >Read more →</a
+      <app-orbiting-circles
+        [iconSize]="30"
+        [radius]="500"
+        [reverse]="true"
+        [speed]="8"
       >
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+        <div #icon><app-book-icon></app-book-icon></div>
+        <div #icon><app-people-icon></app-people-icon></div>
+        <div #icon><app-emailicon></app-emailicon></div>
+      </app-orbiting-circles>
     </div>
-    }
+    <div
+      class="p-3 scale-[1.75] shadow-[2px_2px_15px_#1e1e1e80] dark:shadow-[2px_2px_15px_#F5E8D880] m-5 w-fit dark:bg-[#1eeeee]/60 bg-[#ccccce]/80 rounded-2xl"
+    >
+      <app-logo-icon></app-logo-icon>
+    </div>
+    <h1
+      class="inter font-bold text-7xl bg-gradient-to-r brightness-110 from-[#00ADB5] to-[#FF6F61] relative z-40 bg-clip-text text-transparent"
+    >
+      Scribble your thoughts
+    </h1>
+    <p
+      class="display font-semibold text-5xl bg-gradient-to-b from-gray-200 to-gray-500 relative z-40 bg-clip-text text-transparent"
+    >
+      Sketch your stories
+    </p>
+  </section>
+  <div class="text-center">
+    <a
+      href="/blogs"
+      class="inline-block mb-[6%] bg-[#1e1e1e] text-white dark:bg-[#eeeeee] dark:text-black font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition"
+    >
+      Explore More Stories <span class="text-xl font-bold pl-1">→</span>
+    </a>
   </div>
+  <section
+    class="min-h-[500px] flex mb-[8%] relative"
+    style="
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #ff6f6140 25%,
+        #ff6f6140 75%,
+        transparent 100%
+      );
+    "
+  >
+    <app-wave-line></app-wave-line>
+    <!-- <div class="w-1/2 flex flex-col relative z-20 items-center justify-center">
+      <h3 class="text-6xl font-semibold hand text-center">
+        View Some Of Our Pages
+      </h3>
+      <p></p>
+    </div> -->
+    <div class="w-full flex flex-col relative z-20 items-center justify-center">
+      <h2 class="text-6xl hand font-bold mb-4">Start Your Scribble Journey Today</h2>
+      <p class="text-gray-600 dark:text-gray-300/80 mb-6 tracking-tight mono">
+        Unleash your thoughts, connect with readers, and make your mark.
+      </p>
+      <a
+        href="/register"
+        class="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition"
+      >
+        Create Your Story
+      </a>
+    </div>
+  </section>
+  <h3 class="text-5xl font-bold pl-[1%] mono">
+    Read What Others Are Saying About Us :
+  </h3>
+  <section class="relative">
+    <app-marquee [items]="firstRow"></app-marquee>
+    <app-marquee [items]="secondRow" [reverse]="true"></app-marquee>
+    <div
+      class="pointer-events-none h-full absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#EEEEEE]/80 dark:from-[#222831]/80 to-transparent to-40%"
+    ></div>
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#EEEEEE]/80 dark:from-[#222831]/80 to-45% to-transparent"
+    ></div>
+  </section>
 </main>

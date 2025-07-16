@@ -1,0 +1,15 @@
+<div class="marquee-wrapper">
+  <div
+  class="mt-8" [ngClass]="reverse ? 'marquee-track-reverse' : 'marquee-track'">
+    <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+      <ng-container *ngFor="let item of items" >
+        <app-review-card
+          [img]="item.img"
+          [name]="item.name"
+          [username]="item.username"
+          [body]="item.body"
+        ></app-review-card>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
