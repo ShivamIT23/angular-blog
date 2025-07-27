@@ -1,167 +1,260 @@
-<main class="max-w-5xl mx-auto px-4 py-10 mt-24">
-    <section class="max-w-2xl mx-auto mb-10 flex flex-col items-center">
-      <h1 class="text-5xl font-bold mb-8 display text-center">
-        Together We Tell
-      </h1>
-      <p class="text-center font-medium opacity-65">
-        Dive into colorful stories and behind-the-scenes sketches shared by our
-        lively community of writers and visual storytellers.
-      </p>
-      <section class="flex gap-6 xs:gap-16 mt-8 w-full justify-center">
-        <div class="flex flex-col items-center justify-center w-16">
-          <div
-            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-purple-300 bg-purple-300/30"
-          >
-            <app-book-icon></app-book-icon>
-          </div>
-          <h3
-            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
-          >
-            150+
-          </h3>
-          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-            Blogs
-          </p>
+<main class="max-w-5xl mx-auto px-[4vw] sm:px-4 py-6 sm:py-10 mt-24">
+  <section class="max-w-2xl mx-auto mb-8 sm:mb-10 flex flex-col items-center">
+    <h1 class="text-2xl sm:text-5xl font-bold mb-4 sm:mb-8 display text-center">
+      Together We Tell
+    </h1>
+    <p class="text-center font-medium opacity-65 text-sm sm:text-lg">
+      Dive into colorful stories and behind-the-scenes sketches shared by our
+      lively community of writers and visual storytellers.
+    </p>
+    <section
+      class="flex gap-4 xs:gap-8 sm:gap-16 mt-6 sm:mt-8 w-full justify-center flex-wrap"
+    >
+      <div class="flex flex-col items-center justify-center w-16">
+        <div
+          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-purple-300 bg-purple-300/30"
+        >
+          <app-book-icon></app-book-icon>
         </div>
-        <div class="flex flex-col items-center justify-center w-16">
-          <div
-            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-blue-300 bg-blue-300/30"
-          >
-            <app-people-icon></app-people-icon>
-          </div>
-          <h3
-            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
-          >
-            3K+
-          </h3>
-          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-            Readers
-          </p>
+        <h3
+          class="text-lg sm:text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+        >
+          150+
+        </h3>
+        <p class="text-xs sm:text-sm opacity-70 font-medium w-full text-center pl-1">
+          Blogs
+        </p>
+      </div>
+      <div class="flex flex-col items-center justify-center w-16">
+        <div
+          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-blue-300 bg-blue-300/30"
+        >
+          <app-people-icon></app-people-icon>
         </div>
-        <div class="flex flex-col items-center justify-center w-16">
-          <div
-            class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-green-300 bg-green-300/30"
-          >
-            <app-arrow-icon></app-arrow-icon>
-          </div>
-          <h3
-            class="text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
-          >
-            13+
-          </h3>
-          <p class="text-sm opacity-70 font-medium w-full text-center pl-1">
-            Categories
-          </p>
+        <h3
+          class="text-lg sm:text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+        >
+          3K+
+        </h3>
+        <p class="text-xs sm:text-sm opacity-70 font-medium w-full text-center pl-1">
+          Readers
+        </p>
+      </div>
+      <div class="flex flex-col items-center justify-center w-16">
+        <div
+          class="p-2.5 shadow hover:shadow-md hover:scale-110 transition duration-500 rounded-full dark:bg-green-300 bg-green-300/30"
+        >
+          <app-arrow-icon></app-arrow-icon>
         </div>
-      </section>
+        <h3
+          class="text-lg sm:text-xl mt-2 font-bold w-full pl-1 text-center relative mono"
+        >
+          13+
+        </h3>
+        <p class="text-xs sm:text-sm opacity-70 font-medium w-full text-center pl-1">
+          Categories
+        </p>
+      </div>
     </section>
-    <div class="w-full h-10 relative rounded-4xl mb-6">
-      <input
-        type="text"
-        class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-4xl p-4"
-        [ngClass]="isInputFocused ? 'pl-4' : 'pl-10'"
-        placeholder="Search articles, authors, or topics..."
-        (focus)="isInputFocused = true"
-        (blur)="isInputFocused = false"
-      />
-      <button
-        class="absolute top-1/2 -translate-y-1/2 transition-all duration-300"
-        [ngClass]="
-          isInputFocused
-            ? 'right-2 left-auto pointer-events-auto cursor-pointer'
-            : 'left-2 right-auto pointer-events-none'
-        "
-        (mousedown)="$event.preventDefault()"
-      >
-        <app-search-icon></app-search-icon>
-      </button>
-    </div>
-  
-    <p class="flex flex-wrap gap-3 items-center mb-10">
+  </section>
+  <div class="w-full h-10 relative rounded-4xl mb-6">
+    <input
+      type="text"
+      class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-4xl text-sm sm:text-base"
+      [ngClass]="isInputFocused ? 'pl-4' : 'pl-10'"
+      placeholder="Search articles, authors, or topics..."
+      (focus)="isInputFocused = true"
+      (blur)="isInputFocused = false"
+    />
+    <button
+      class="absolute top-1/2 -translate-y-1/2 transition-all duration-300"
+      [ngClass]="
+        isInputFocused
+          ? 'right-2 left-auto pointer-events-auto cursor-pointer'
+          : 'left-2 right-auto pointer-events-none'
+      "
+      (mousedown)="$event.preventDefault()"
+    >
+      <app-search-icon></app-search-icon>
+    </button>
+  </div>
+
+  <section class="flex w-full overflow-x-auto px-1 sm:px-3">
+    <div class="flex flex-wrap gap-2 sm:gap-3 items-center mb-6 sm:mb-10">
       <img
         src="/category.svg"
         alt="category"
         class="w-6 bg-blue-100/80 rounded-full p-0.5"
       />
-      <span class="text-sm font-medium sans">Categories:</span>
+      <p class="text-xs sm:text-sm font-medium sans">Categories:</p>
       @for(category of categoryList; track category.name){
       <span
-        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[12px] mono cursor-pointer"
-        [ngClass]="selectedCategory === category.name ? category.color : 'dark:bg-gray-200/40 bg-gray-400/30'"
+        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[11px] sm:text-[12px] mono cursor-pointer"
+        [ngClass]="
+          selectedCategory === category.name
+            ? category.color
+            : 'dark:bg-gray-200/40 bg-gray-400/30'
+        "
         (click)="selectCategory(category.name)"
         >{{ category.name }}</span
       >
       }
-    </p>
-  
-    <div class="flex max-w-6xl flex-col justify-center gap-6">
-      @for (post of filteredBlogPosts; track post.id) {
-      <div
-        class="flex flex-col-reverse md:flex-row gap-1 justify-between bg-white/70 dark:bg-[#141414]/80 rounded-2xl shadow-md p-6 hover:shadow-lg transition h-fit"
-      >
-        <div class="flex-1 pr-4 @container">
-          <p
-            class="text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 mb-4"
-          >
-            {{ post.category }}
-          </p>
-          <div
-            class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 mb-3"
-          >
-            <img
-              [src]="post.authorPhoto"
-              alt="{{ post.author }}"
-              class="w-5 h-5 rounded-full"
-            />
-            <span class="dark:text-gray-200">{{ post.author }}</span>
-            <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
-              >•</span
-            >
-            <span class="flex max-xxs:hidden dark:text-gray-200">{{
-              post.date
-            }}</span>
-            <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
-              >•</span
-            >
-            <span class="flex max-xxs:hidden dark:text-gray-200">{{
-              post.readTime
-            }}</span>
-          </div>
-          <div
-            class="hidden max-xxs:flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 mb-3"
-          >
-            <span class="text-gray-300 dark:text-gray-500">•</span>
-            <span class="dark:text-gray-200">{{ post.date }}</span>
-            <span class="text-gray-300 dark:text-gray-500">•</span>
-            <span class="dark:text-gray-200">{{ post.readTime }}</span>
-          </div>
-          <h2
-            class="text-xl font-semibold display text-gray-800 dark:text-gray-100 mb-1.5"
-          >
-            {{ post.title }}
-          </h2>
-          <p
-            class="text-gray-600/85 dark:text-gray-300 mb-3 line-clamp-3 @md:line-clamp-2 text-[16px]"
-          >
-            {{ post.summary }}
-          </p>
-          <a
-            [routerLink]="['/blog', post.id]"
-            class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-sm"
-          >
-            Read more →
-          </a>
-          <div class="text-sm text-gray-400 dark:text-gray-500 mt-2">
-            ❤️ {{ post.likes }}
-          </div>
-        </div>
-        <img
-          [src]="post.mainImage"
-          alt="{{ post.title }}"
-          class="w-auto h-44 my-auto object-cover rounded-xl"
-        />
-      </div>
-      }
     </div>
-  </main>
-  
+    <button
+      (click)="refresh()"
+      class="bg-blue-100/80 h-fit ml-2 cursor-pointer text-blue-800 text-base sm:text-lg font-bold hand px-1.5 py-0.5 rounded-xl"
+    >
+      Refresh
+    </button>
+  </section>
+
+  <div class="flex relative max-w-6xl flex-col justify-center gap-4 sm:gap-6">
+    @if(loading){
+    <div
+      class="absolute top-10 font-bold display left-1/2 -translate-x-1/2 text-2xl sm:text-3xl flex items-end"
+    >
+      Loading Please Wait
+      <img src="/Square_Loader.gif" alt="" class="h-6 ml-2" />
+    </div>
+    } @for (post of paginatedBlogPosts; track post.id) {
+    <div
+      [ngClass]="loading ? 'opacity-10' : 'opacity-100'"
+      class="flex flex-col md:flex-row gap-3 md:gap-1 justify-between bg-white/70 dark:bg-[#141414]/80 rounded-2xl shadow-md p-3 sm:p-6 hover:shadow-lg transition h-fit"
+    >
+      <div class="flex-1 pr-0 md:pr-4 @container">
+        <p
+          class="text-xs sm:text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-3 sm:px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 mb-2 sm:mb-4"
+        >
+          {{ post.category }}
+        </p>
+        <div
+          class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300 mb-2 sm:mb-3"
+        >
+          <img
+            [src]="post.owner_photo"
+            alt="{{ post.owner_name }}"
+            class="w-5 h-5 rounded-full"
+          />
+          <span class="dark:text-gray-200">{{ post.owner_name }}</span>
+          <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+            >•</span
+          >
+          <span class="flex max-xxs:hidden dark:text-gray-200">{{
+            post.date
+          }}</span>
+          <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+            >•</span
+          >
+          <span class="flex max-xxs:hidden dark:text-gray-200">{{
+            post.readTime
+          }}</span>
+        </div>
+        <div
+          class="hidden max-xxs:flex items-center gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300 mb-2 sm:mb-3"
+        >
+          <span class="text-gray-300 dark:text-gray-500">•</span>
+          <span class="dark:text-gray-200">{{ post.date }}</span>
+          <span class="text-gray-300 dark:text-gray-500">•</span>
+          <span class="dark:text-gray-200">{{ post.readTime }}</span>
+        </div>
+        <h2
+          class="text-base sm:text-xl font-semibold display text-gray-800 dark:text-gray-100 mb-1.5"
+        >
+          <div [innerHTML]="post.safeTitle"></div>
+        </h2>
+        <p
+          class="text-gray-600/85 dark:text-gray-300 mb-2 sm:mb-3 line-clamp-3 @md:line-clamp-2 text-[14px] sm:text-[16px]"
+        >
+          {{ post.summary }}
+        </p>
+        <a
+          [routerLink]="['/blog', post.id]"
+          class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-xs sm:text-sm"
+        >
+          Read more →
+        </a>
+        <div class="text-xs sm:text-sm text-gray-400 dark:text-gray-500 mt-2">
+          ❤️ {{ post.likes }}
+        </div>
+      </div>
+      <img
+        [src]="post.mainImage"
+        alt="Image of the blog"
+        class="w-full sm:w-auto h-32 sm:h-44 my-auto object-cover rounded-xl max-w-xs mx-auto"
+      />
+    </div>
+    }
+  </div>
+
+  <!-- Pagination -->
+  @if(totalPages > 1 || hasMorePages){
+  <div class="flex justify-center items-center mt-8 sm:mt-12 mb-6">
+    <nav class="flex items-center gap-2 sm:gap-3" aria-label="Pagination">
+      <!-- Previous Button -->
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+        class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium transition-colors"
+        [ngClass]="
+          currentPage === 1
+            ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer'
+        "
+        aria-label="Previous page"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Page Numbers -->
+      @for(page of getPageNumbers(); track page){
+        @if(page === 1 && getPageNumbers()[0] !== 1){
+          <span class="px-2 text-gray-500 dark:text-gray-400">...</span>
+        }
+        <button
+          (click)="goToPage(page)"
+          class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg border text-sm font-medium transition-colors"
+          [ngClass]="
+            currentPage === page
+              ? 'bg-blue-600 border-blue-600 text-white'
+              : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+          "
+          [attr.aria-label]="'Page ' + page"
+          [attr.aria-current]="currentPage === page ? 'page' : null"
+        >
+          {{ page }}
+        </button>
+        @if(page === getPageNumbers()[getPageNumbers().length - 1] && page !== totalPages && hasMorePages){
+          <span class="px-2 text-gray-500 dark:text-gray-400">...</span>
+        }
+      }
+
+      <!-- Next Button -->
+      <button
+        (click)="nextPage()"
+        [disabled]="!hasMorePages"
+        class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium transition-colors"
+        [ngClass]="
+          !hasMorePages
+            ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer'
+        "
+        aria-label="Next page"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Page Info -->
+  <div class="text-center text-sm text-gray-600 dark:text-gray-400 mb-8">
+    Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to {{ totalBlogs }} of {{ hasMorePages ? 'many' : totalBlogs }} results
+    @if(hasMorePages){
+      <span class="text-blue-600 dark:text-blue-400"> • More pages available</span>
+    }
+  </div>
+  }
+</main>

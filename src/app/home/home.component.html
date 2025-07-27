@@ -1,9 +1,9 @@
-<main class="my-20 relative">
+<main class="my-10 sm:my-20 relative">
   <section
-    class="min-h-[600px] mt-[10%] h-fit w-full flex gap-8 flex-col justify-center items-center relative"
+    class="min-h-[400px] sm:min-h-[600px] mt-10 sm:mt-[10%] h-fit w-full flex gap-4 sm:gap-8 flex-col justify-center items-center relative"
   >
     <div
-      class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex h-[500px] w-full flex-col items-center justify-center overflow-hidden"
+      class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex h-[260px] xs:h-[350px] sm:h-[500px] w-full flex-col items-center justify-center overflow-hidden"
     >
       <app-orbiting-circles [iconSize]="40" [radius]="225" [speed]="5">
         <div #icon><app-book-icon></app-book-icon></div>
@@ -37,31 +37,31 @@
       </app-orbiting-circles>
     </div>
     <div
-      class="p-3 scale-[1.75] shadow-[2px_2px_15px_#1e1e1e80] dark:shadow-[2px_2px_15px_#F5E8D880] m-5 w-fit dark:bg-[#1eeeee]/60 bg-[#ccccce]/80 rounded-2xl"
+      class="p-2 sm:p-3 scale-110 sm:scale-[1.75] shadow-[2px_2px_15px_#1e1e1e80] dark:shadow-[2px_2px_15px_#F5E8D880] m-2 sm:m-5 w-fit dark:bg-[#1eeeee]/60 bg-[#ccccce]/80 rounded-2xl"
     >
       <app-logo-icon></app-logo-icon>
     </div>
     <h1
-      class="inter font-bold text-7xl bg-gradient-to-r brightness-110 from-[#00ADB5] to-[#FF6F61] relative z-40 bg-clip-text text-transparent"
+      class="inter font-bold text-3xl xs:text-4xl sm:text-7xl bg-gradient-to-r brightness-110 from-[#00ADB5] to-[#FF6F61] relative z-40 bg-clip-text text-transparent text-center px-2"
     >
       Scribble your thoughts
     </h1>
     <p
-      class="display font-semibold text-5xl bg-gradient-to-b from-gray-200 to-gray-500 relative z-40 bg-clip-text text-transparent"
+      class="display font-semibold text-2xl xs:text-3xl sm:text-5xl bg-gradient-to-b from-gray-200 to-gray-500 relative z-40 bg-clip-text text-transparent text-center px-2"
     >
       Sketch your stories
     </p>
   </section>
   <div class="text-center">
     <a
-      href="/blogs"
-      class="inline-block mb-[6%] bg-[#1e1e1e] text-white dark:bg-[#eeeeee] dark:text-black font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition"
+      routerLink="/blogs"
+      class="inline-block mb-8 sm:mb-[6%] bg-[#1e1e1e] text-white dark:bg-[#eeeeee] dark:text-black font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:opacity-90 transition text-base sm:text-lg"
     >
-      Explore More Stories <span class="text-xl font-bold pl-1">→</span>
+      Explore Untold Stories <span class="text-xl font-bold pl-1">→</span>
     </a>
   </div>
   <section
-    class="min-h-[500px] flex mb-[8%] relative"
+    class="min-h-[300px] sm:min-h-[500px] flex mb-8 sm:mb-[8%] relative"
     style="
       background: linear-gradient(
         to bottom,
@@ -73,26 +73,20 @@
     "
   >
     <app-wave-line></app-wave-line>
-    <!-- <div class="w-1/2 flex flex-col relative z-20 items-center justify-center">
-      <h3 class="text-6xl font-semibold hand text-center">
-        View Some Of Our Pages
-      </h3>
-      <p></p>
-    </div> -->
-    <div class="w-full flex flex-col relative z-20 items-center justify-center">
-      <h2 class="text-6xl hand font-bold mb-4">Start Your Scribble Journey Today</h2>
-      <p class="text-gray-600 dark:text-gray-300/80 mb-6 tracking-tight mono">
+    <div class="w-full flex flex-col relative z-20 items-center justify-center px-2 sm:px-0">
+      <h2 class="text-2xl xs:text-4xl sm:text-6xl hand font-bold mb-2 sm:mb-4 text-center">Start Your Scribble Journey Today</h2>
+      <p class="text-gray-600 dark:text-gray-300/80 mb-4 sm:mb-6 tracking-tight mono text-base sm:text-lg text-center">
         Unleash your thoughts, connect with readers, and make your mark.
       </p>
       <a
-        href="/register"
-        class="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition"
+        routerLink="/create"
+        class="px-4 sm:px-6 py-2 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition text-base sm:text-lg"
       >
         Create Your Story
       </a>
     </div>
   </section>
-  <h3 class="text-5xl font-bold pl-[1%] mono">
+  <h3 class="text-2xl xs:text-3xl sm:text-5xl font-bold pl-2 sm:pl-[1%] mono text-center sm:text-left">
     Read What Others Are Saying About Us :
   </h3>
   <section class="relative">

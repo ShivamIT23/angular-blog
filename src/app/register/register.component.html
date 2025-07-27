@@ -1,62 +1,66 @@
-<main class="grid md:grid-cols-2 w-full h-fit">
+<main class="grid grid-cols-1 md:grid-cols-2 w-full h-fit">
   <section
-    class="bg-[#00ADB5] w-full shadow-2xl flex items-center justify-center min-h-screen relative"
+    class="bg-[#00ADB5] w-full shadow-2xl flex items-center justify-center min-h-[40vh] md:min-h-screen relative py-8 md:py-0"
   >
     <img
       src="/sign-up-form.svg"
       alt="register"
-      class="h-screen aspect-square drop-shadow-2xl"
+      class="h-40 xs:h-64 sm:h-[40vw] md:h-screen w-full max-w-xs sm:max-w-md md:max-w-full object-contain drop-shadow-2xl"
     />
   </section>
   <section
-    class="min-h-scree h-fit  py-20 flex flex-col justify-center gap-8 items-center"
+    class="mx-[3vw] min-h-[60vh] md:min-h-screen h-fit py-10 md:py-20 flex flex-col justify-center gap-6 md:gap-8 items-center"
   >
     <div
-      class="w-[90%] relative max-w-xl mx-auto min-h-[70vh] h-fit rounded-xl overflow-hidden shadow-xl"
+      class="w-[98%] xs:w-[90%] relative max-w-xl mx-auto min-h-[55vh] md:min-h-[70vh] h-fit rounded-xl overflow-hidden shadow-xl"
     >
       <div
         class="absolute top-0 left-0 h-2 w-full bg-gradient-to-r [background-image:linear-gradient(to_right,_#00ADB5_0%,_#00ADB5_75%,_#00ADB5_80%,_#FF6F61_85%,_#FF6F61_100%)]"
       ></div>
       <div
-        class="bg-[#F2F2F2] text-[#2F2F36] dark:text-[#F2F2F2] min-h-[70vh] h-fit dark:bg-[#2F2F36] rounded-b-xl p-6 flex flex-col items-center justify-center"
+        class="bg-[#F2F2F2] text-[#2F2F36] dark:text-[#F2F2F2] min-h-[55vh] md:min-h-[70vh] h-fit dark:bg-[#2F2F36] rounded-b-xl p-4 md:p-6 flex flex-col items-center justify-center"
       >
         <div>
           <h3
-            class="w-full flex justify-center mb-8 text-[#00ADB5] text-2xl font-bold"
+            class="w-full flex justify-center mb-6 md:mb-8 text-[#00ADB5] text-xl md:text-2xl font-bold"
           >
             Soul<span class="text-[#FF6F61]">Script</span>
           </h3>
-          <h3 class="w-full flex justify-center text-3xl mb-2 font-bold">
+          <h3 class="w-full flex justify-center text-2xl md:text-3xl mb-2 font-bold">
             Become a Member
           </h3>
-          <p class="text-center text-sm font-medium opacity-50">
+          <p class="text-center text-xs md:text-sm font-medium opacity-50">
             Connect with fellow writers and passionate readers
           </p>
         </div>
         <form
-          class="my-10 px-[10%] gap-3 w-full flex justify-center items-start flex-col"
+          class="my-6 md:my-10 px-2 md:px-[10%] gap-3 w-full flex justify-center items-start flex-col"
+          (ngSubmit)="onRegister()"
+          #registerForm="ngForm"
         >
-          <label for="name" class="font-semibold">Full Name:</label>
+          <label for="name" class="font-semibold text-sm md:text-base">Full Name:</label>
           <div class="w-full h-fit relative rounded-lg">
             <input
               type="text"
-              name="name"
+              name="fullName"
+              [(ngModel)]="fullName"
               placeholder="Enter your name"
-              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-11 p-1.5 pl-8"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-10 md:h-11 p-1.5 pl-8 text-sm md:text-base"
             />
             <div
               class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
             >
-              <img src="/person.svg" alt="p" class="w-5">
+              <img src="/person.svg" alt="p" class="w-5" />
             </div>
           </div>
-          <label for="email" class="font-semibold">Email Address:</label>
-          <div class="w-full h-fit relative rounded-lg flex items-center mb-3">
+          <label for="email" class="font-semibold text-sm md:text-base">Email Address:</label>
+          <div class="w-full h-fit relative rounded-lg flex items-center mb-2 md:mb-3">
             <input
-              type="text"
+              type="email"
               name="email"
+              [(ngModel)]="email"
               placeholder="Enter your email"
-              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 h-11 placeholder-gray-500 rounded-lg shadow-xl p-1.5 pl-8"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 h-10 md:h-11 placeholder-gray-500 rounded-lg shadow-xl p-1.5 pl-8 text-sm md:text-base"
             />
             <div
               class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
@@ -64,39 +68,59 @@
               <app-emailicon></app-emailicon>
             </div>
           </div>
-          <label for="password" class="font-semibold">Password:</label>
+          <label for="password" class="font-semibold text-sm md:text-base">Password:</label>
           <div class="w-full h-fit relative rounded-lg">
             <input
-              type="text"
+            [attr.type]="showPassword ? 'text' : 'password'"
               name="password"
+              [(ngModel)]="password"
               placeholder="Enter your password"
-              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-11 p-1.5 pl-8"
+              class="border-2 w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 rounded-lg shadow-xl h-10 md:h-11 p-1.5 pl-8 text-sm md:text-base"
             />
             <div
               class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
             >
               <app-password-icon></app-password-icon>
             </div>
+            <div
+            (click)="changeShow()"
+              class="absolute top-1/2 h-full flex items-center cursor-pointer -translate-y-1/2 transition-all duration-300 right-2"
+            >
+              <app-password-eye [show]="showPassword"></app-password-eye>
+            </div>
           </div>
           <button
-            class="bg-[#00ADB5] drop-shadow-md text-shadow-3xl dark:text-[#2F2F36] text-[#F2F2F2] w-full text-xl font-bold shadow-xl rounded-xl p-1.5 mt-4"
+            class="bg-[#00ADB5] drop-shadow-md text-shadow-3xl dark:text-[#2F2F36] text-[#F2F2F2] w-full text-lg md:text-xl font-bold shadow-xl rounded-xl p-1.5 mt-4 cursor-pointer hover:shadow-2xl hover:text-xl"
+            type="submit"
           >
             Create Account
           </button>
+          <!-- Success/Error Messages -->
+          @if(successMessage){
+          <div class="text-green-600 font-medium mt-2 text-sm md:text-base">
+            Please Go To 
+            <a routerLink="/login" class="underline text-purple-500 font-bold mono">Login</a>
+             Now To Become A Member
+          </div>
+          } @if(errorMessage){
+          <div class="text-red-600 font-medium mt-2 text-sm md:text-base">
+            {{ errorMessage }}
+          </div>
+          }
         </form>
-        <p class="font-medium">
+        <p class="font-medium text-xs md:text-base">
           Already have an account?
-          <a href="/login" class="text-[#FF6F61] hover:underline text-lg"
+          <a routerLink="/login" class="text-[#FF6F61] hover:underline text-base md:text-lg"
             >Login</a
           >
         </p>
       </div>
     </div>
-    <p class="font-semibold text-shadow-">
+    <p class="font-semibold text-shadow-2xs px-2 md:px-4 text-xs md:text-base text-center">
       By continuing, you're cool with our
-      <a href="" class="text-[#FF6F61] hover:underline">[Terms of Service]</a>
+      <a routerLink="" class="text-[#FF6F61] hover:underline">[Terms of Service]</a>
       and
-      <a href="" class="text-[#FF6F61] hover:underline">[Privacy Policy]</a>.
+      <a routerLink="" class="text-[#FF6F61] hover:underline">[Privacy Policy]</a>.
     </p>
   </section>
 </main>

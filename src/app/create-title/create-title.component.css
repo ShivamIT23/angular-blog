@@ -1,0 +1,67 @@
+::ng-deep .ql-container {
+  border: none !important;
+  padding: 0 !important;
+}
+::ng-deep .ql-editor {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #4e1e4e40 !important;
+  min-height: 64px; /* You can increase this */
+  font-size: 1.875rem;
+  font-family: "Playfair Display", serif !important;
+  display: flex;
+  align-items: center;
+  line-height: 1.2 !important;
+  padding-left: 12px !important;
+}
+
+::ng-deep .ql-toolbar {
+  border: 1px solid rgba(128, 128, 128, 0.4) !important;
+  height: 40px !important;
+  display: flex;
+  min-height: fit-content !important;
+  align-items: center;
+}
+
+::ng-deep #title .ql-editor::before {
+  color: rgba(142, 30, 142, 0.7); /* light mode */
+  font-family: "Playfair Display", serif !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  font-size: 1.875rem;
+  padding: 0 !important;
+}
+
+/* Responsive Quill title placeholder and toolbar */
+@media (max-width: 640px) {
+  ::ng-deep #title .ql-editor {
+    font-size: 1.25rem !important;
+    min-height: 44px !important;
+    padding-left: 6px !important;
+  }
+  ::ng-deep #title .ql-editor::before {
+    font-size: 1.25rem !important;
+  }
+  ::ng-deep #title .ql-toolbar {
+    height: 32px !important;
+    font-size: 1rem !important;
+    padding: 0 4px !important;
+  }
+}
+@media (max-width: 400px) {
+  ::ng-deep #title .ql-editor {
+    font-size: 1.05rem !important;
+    min-height: 36px !important;
+    padding-left: 2px !important;
+  }
+  ::ng-deep #title .ql-editor::before {
+    font-size: 1.05rem !important;
+  }
+  ::ng-deep #title .ql-toolbar {
+    height: 28px !important;
+    font-size: 0.9rem !important;
+    padding: 0 2px !important;
+  }
+}

@@ -1,86 +1,189 @@
 <nav
-  class="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-20 px-8 bg-white/60 dark:bg-[#141414]/60 shadow-md backdrop-blur-md"
+  class="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-16 sm:h-20 px-4 sm:px-8 bg-white/60 dark:bg-[#141414]/60 shadow-md backdrop-blur-md"
 >
   <!-- Left logo/title -->
-  <div class="flex justify-center items-center gap-2">
-    <div class="p-3 dark:bg-[#1eeeee]/60 bg-[#ccccce]/80 rounded-2xl ">
+  <div class="flex justify-center items-center gap-1 sm:gap-2">
+    <div class="p-2 sm:p-3 dark:bg-[#1eeeee]/60 bg-[#ccccce]/80 rounded-2xl">
       <app-logo-icon></app-logo-icon>
     </div>
     <span
-      class="text-2xl font-extrabold italic text-[#1c1c1c] dark:text-[#F5E8D8] tracking-wide"
+      class="text-lg sm:text-2xl font-extrabold italic text-[#1c1c1c] dark:text-[#F5E8D8] tracking-wide"
       >SoulScript</span
     >
   </div>
 
-  <!-- Center links -->
-  <div class="flex items-center gap-6">
-    <a routerLink="/" class="font-semibold text-[#00ADB5] hover:underline"
-      >Home</a
+  <!-- Hamburger Button (Mobile Only) -->
+  <div class="flex md:hidden items-center gap-2">
+    <button
+      class="p-2 rounded focus:outline-none"
+      (click)="toggleMenu()"
+      aria-label="Open menu"
     >
-    <a
-      routerLink="/login"
-      class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
-      >Login</a
-    >
-    <a
-      routerLink="/register"
-      class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
-      >Register</a
-    >
-    <a
-      routerLink="/blogs"
-      class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
-      >Blogs</a
-    >
-    <!-- <div class="relative group">
-      <button
-        class="font-semibold text-gray-700 dark:text-gray-200 hover:underline flex items-center"
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
       >
-        Blogs
-        <svg
-          class="w-4 h-4 ml-1 rotate-180 group-hover:rotate-0 transition duration-300"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
-      <div
-        class="absolute left-0 mt-2 w-40 bg-white/90 dark:bg-gray-800/90 rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200"
-        style="z-index: 60"
-      >
-        <a
-          href="/blogs"
-          class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >Famous</a
-        >
-        <a
-          href="#"
-          class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >Latest</a
-        >
-      </div>
-    </div> -->
-  </div>
-
-  <!-- Right links and theme toggle -->
-  <div class="flex items-center gap-4">
-    <a
-      routerLink="/create"
-      class="font-semibold rounded-xl p-1.5 bg-blue-100 text-blue-800 flex gap-1 items-center hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-md"
-      ><app-add-icon></app-add-icon> Create</a
-    >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
     <button
       (click)="toggleTheme()"
       class="ml-4 px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition"
     >
       {{ theme === "dark" ? "🌙" : "☀️" }}
+    </button>
+  </div>
+
+  <!-- Center and Right Links (Desktop) -->
+  <div class="hidden md:flex items-center gap-6">
+    <a routerLink="/" class="font-semibold text-[#00ADB5] hover:underline"
+      >Home</a
+    >
+    <ng-container *ngIf="!isUser; else loggedInLinks">
+      <a
+        routerLink="/login"
+        class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
+        >Login</a
+      >
+      <a
+        routerLink="/register"
+        class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
+        >Register</a
+      >
+    </ng-container>
+    <ng-template #loggedInLinks>
+      <a
+        routerLink="/my-blogs"
+        class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
+        >My Blogs</a
+      >
+    </ng-template>
+    <a
+      routerLink="/blogs"
+      class="font-semibold text-gray-700 dark:text-gray-200 hover:underline"
+      >Blogs</a
+    >
+  </div>
+  <div class="hidden md:flex items-center gap-2">
+    <a
+      routerLink="/create"
+      class="font-semibold hidden md:flex rounded-xl p-1.5 bg-blue-100 text-blue-800 gap-1 items-center hover:scale-110 transition-all duration-300 shadow-sm mr-4 hover:shadow-md"
+      ><app-add-icon></app-add-icon> Create</a
+    >
+    <ng-container *ngIf="isUser">
+      <div class="relative group">
+        <button
+          class="font-semibold text-gray-700 dark:text-gray-200 hover:underline flex items-center rounded-full"
+        >
+          <img
+            [src]="user_image"
+            alt="user photo"
+            class="w-8 sm:w-10 rounded-full h-auto aspect-square object-cover"
+          />
+        </button>
+        <div
+          class="absolute left-0 mt-2 max-w-40 w-fit bg-white/90 dark:bg-gray-800/90 rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200"
+          style="z-index: 60"
+        >
+          <a
+            routerLink="/change-photo"
+            class="block px-4 py-2 w-full text-gray-700 dark:text-gray-200 whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            My Photo
+          </a>
+          <button
+            (click)="loggedOut()"
+            class="block px-4 py-2 w-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <button
+      (click)="toggleTheme()"
+      class="ml-4 px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition"
+    >
+      {{ theme === "dark" ? "🌙" : "☀️" }}
+    </button>
+  </div>
+
+  <!-- Mobile Menu (Dropdown) -->
+  <div
+    class="md:hidden fixed top-0 left-0 w-full min-h-[60vh] h-fit bg-white/95 dark:bg-[#141414]/95 z-50 flex flex-col items-center pt-24 pb-10 transition-all duration-300"
+    *ngIf="menuOpen"
+  >
+    <button
+      class="absolute top-6 right-6 p-2"
+      (click)="closeMenu()"
+      aria-label="Close menu"
+    >
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+    <a
+      routerLink="/"
+      (click)="closeMenu()"
+      class="block py-3 text-xl font-semibold text-[#00ADB5]"
+      >Home</a
+    >
+    <a
+      *ngIf="!isUser"
+      routerLink="/login"
+      (click)="closeMenu()"
+      class="block py-3 text-lg"
+      >Login</a
+    >
+    <a
+      *ngIf="!isUser"
+      routerLink="/register"
+      (click)="closeMenu()"
+      class="block py-3 text-lg"
+      >Register</a
+    >
+    <a
+      *ngIf="isUser"
+      routerLink="/my-blogs"
+      (click)="closeMenu()"
+      class="block py-3 text-lg"
+      >My Blogs</a
+    >
+    <a routerLink="/blogs" (click)="closeMenu()" class="block py-3 text-lg"
+      >Blogs</a
+    >
+    <a routerLink="/create" (click)="closeMenu()" class="flex items-center gap-2 py-3 text-lg"
+      ><app-add-icon></app-add-icon> Create</a
+    >
+    <a
+      routerLink="/change-photo"
+      class="block px-4 py-2 w-full text-center text-gray-700 dark:text-gray-200 whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-700"
+    >
+      My Photo
+    </a>
+    <button
+      *ngIf="isUser"
+      (click)="loggedOut(); closeMenu()"
+      class="block py-3 text-lg w-full text-center"
+    >
+      Logout
     </button>
   </div>
 </nav>

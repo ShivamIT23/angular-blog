@@ -1,40 +1,34 @@
-<main class="w-full mx-auto mt-[6rem]">
+<main class="w-full mx-auto mt-[4rem] sm:mt-[6rem] px-0">
   <header
     class="w-full bg-white/70 pt-4 pb-8 dark:bg-[#131313]/40 flex-col items-center justify-center flex gap-2"
   >
     <h1
-      class="display text-3xl min-[540px]:text-5xl max-w-[90vw] font-semibold mx-auto flex justify-center items-center"
+      class="display text-xl min-[540px]:text-3xl sm:text-5xl max-w-[98vw] font-semibold mx-auto flex justify-center items-center"
     >
       <span
-        class="mr-2 max-[570px]:hidden flex rounded-full bg-gradient-to-br from-[#F5E8D8] to-[#85C1E9] p-[18px]"
+        class="mr-2 max-[570px]:hidden flex rounded-full bg-gradient-to-br from-[#F5E8D8] to-[#85C1E9] p-2 sm:p-[18px]"
       >
         <app-pen-icon></app-pen-icon>
       </span>
       <span class="text-center"> Ink Your Imagination </span>
     </h1>
-    <p class="text-center text-lg xs:text-xl sans opacity-80 max-w-[95vw]">
+    <p
+      class="text-center text-sm xs:text-base sm:text-xl sans opacity-80 max-w-[98vw]"
+    >
       Scribble your thoughts, ideas, and stories for the whole world to see
     </p>
   </header>
   <section
-    class="max-w-5xl rounded-2xl border-gray-600/40 dark:border-gray-300/40 shadow-2xl min-h-[80vh] mt-[10vh] mb-[5vh] border mx-auto px-10 pt-10"
+    class="max-w-5xl rounded-2xl border-gray-600/40 dark:border-gray-300/40 shadow-2xl min-h-[80vh] mt-[6vh] sm:mt-[10vh] mb-[5vh] border mx-[4vw] lg:mx-auto px-4 lg:px-6 md:px-10 pt-6 sm:pt-10"
   >
     <p class="flex gap-3 mb-4 items-center">
       <app-t-icon></app-t-icon>
       <span class="text-[15px] font-semibold inter">Thought Title</span>
     </p>
-    <input
-      type="text"
-      class="border-b w-full text-[#000000]/80 dark:text-[#ffffff]/80 text-3xl placeholder-[#8e1e8e]/70 focus:outline-none dark:placeholder-blue-200 font-extrabold border-[#4e1e4e]/40 dark:border-gray-300/40 display h-16"
-      placeholder="Enter your story title"
-      [value]="title"
-      (input)="onTitleInput($event)"
-      maxlength="60"
-    />
-    <p class="text-end font-[500] mb-4">
-      <!-- <span class="text-[#0d7527]">{{ letterCount }}</span>/60 -->
+    <app-create-title></app-create-title>
+    <p class="text-end font-[500] mt-6 mb-4">
       <span class="text-[#8e1e8e] dark:text-blue-200">{{ letterCount }}</span
-      >/60
+      >/50
       <span class="text-[#8e1e8e] dark:text-blue-200">letters</span>
     </p>
     <p class="flex gap-3 items-center mb-6">
@@ -49,14 +43,16 @@
         >Choose One</span
       >
     </p>
-    <div class="grid grid-cols-5 gap-6 mb-4">
+    <div
+      class="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-5 gap-3 xs:gap-4 sm:gap-6 mb-4"
+    >
       @for(category of categoryList; track category.name){
       <div
         (click)="selectedClick(category)"
         [ngClass]="
           selected.name == category.name ? category.color : category.hover
         "
-        class="flex flex-col p-4 gap-2 rounded-2xl justify-center items-center border-2 border-gray-600/40 dark:border-gray-300/40 shadow-sm cursor-pointer relative"
+        class="flex flex-col p-2 xs:p-3 sm:p-4 gap-2 rounded-2xl justify-center items-center border-2 border-gray-600/40 dark:border-gray-300/40 shadow-sm cursor-pointer relative"
       >
         @if(selected.name == category.name){
         <div
@@ -65,23 +61,25 @@
           <app-tick-icon></app-tick-icon>
         </div>
         }
-        <div class="text-2xl">{{ category.icon }}</div>
-        <div class="text-[16px] font-semibold">{{ category.name }}</div>
+        <div class="text-lg xs:text-xl sm:text-2xl">{{ category.icon }}</div>
+        <div class="text-[14px] xs:text-[15px] sm:text-[16px] font-semibold">
+          {{ category.name }}
+        </div>
       </div>
       }
     </div>
-    <p class="opacity-90 font-light">
+    <p class="opacity-90 font-light text-sm xs:text-base">
       Selected:
       <span
-        [ngClass]="selected.color"
-        class="pl-2 pr-2.5 py-0.5 text-sm rounded-2xl"
+        [ngClass]="selected.color + ' ' + selected.textColor"
+        class="pl-2 pr-2.5 py-0.5 text-xs xs:text-sm font-[500] rounded-2xl"
         >{{ selected.icon }} {{ selected.name }}</span
       >
     </p>
     <div
       class="bg-[#4e1e4e]/40 dark:bg-gray-300/40 w-full h-0.5 mt-4 opacity-75"
     ></div>
-    <p class="flex gap-3 items-center mt-10">
+    <p class="flex gap-3 items-center mt-8 sm:mt-10">
       <img src="/image.svg" alt="category" class="w-6" />
       <span class="text-[15px] font-semibold inter">Cover Art</span>
       <span
@@ -89,28 +87,44 @@
         >Optional</span
       >
     </p>
-    <div class="flex w-full gap-4 h-10 my-4">
+    <form
+      class="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 h-fit my-4"
+      #registerForm="ngForm"
+    >
       <div class="w-full relative">
         <p class="absolute top-1/2 -translate-y-1/2 left-2 right-auto">🔗</p>
         <input
           type="text"
-          name=""
+          name="image"
           id=""
-          class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-xl p-4 pl-10"
+          [(ngModel)]="image"
+          class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 h-10 border-2 rounded-xl pl-10 text-sm xs:text-base"
           placeholder="https://example.com/image.jpg"
         />
       </div>
       <button
-        class="whitespace-nowrap bg-blue-300 rounded-2xl px-4 text-[#1e1e1e] font-medium mono h-10"
+        (click)="addImage()"
+        class="whitespace-nowrap bg-blue-300 rounded-2xl px-3 xs:px-4 text-[#1e1e1e] font-medium mono h-10 text-sm xs:text-base"
       >
         Add Image
       </button>
-    </div>
+    </form>
     <div
-      class="border-2 border-dashed border-gray-300 rounded-xl p-14 text-center"
+      class="border-2 border-dashed border-gray-300 relative rounded-xl p-6 xs:p-8 sm:p-14 text-center min-h-[100px] xs:min-h-[120px]"
     >
-      <img src="/image.svg" alt="category" class="w-12 h-12 mx-auto mb-4" />
-      <p class="text-gray-600 dark:text-gray-200 text-sm">
+      @if(mainImage){
+      <img
+        [src]="mainImage"
+        alt="image"
+        class="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+      />
+      }
+      <img
+        src="/image.svg"
+        alt="category"
+        class="w-8 xs:w-10 sm:w-12 h-8 xs:h-10 sm:h-12 mx-auto mb-4"
+      />
+      <p class="text-gray-600 dark:text-gray-200 text-xs sm:text-sm">
         Add an image URL above to preview your featured image
       </p>
       <p class="text-gray-500 dark:text-gray-300/80 text-xs mt-2">
@@ -125,22 +139,58 @@
       </span>
       <span class="text-[15px] font-semibold inter">Tell Your Tale</span>
     </p>
-    <textarea
-      name="content"
-      class="resize-none text-xl focus:outline-none min-h-80 placeholder-[#1e1e1e]/60 dark:placeholder-[#e1e1e1]/70 text-[#1c1c1c]/90 dark:text-[#ffffff]/80 w-full mt-3 pt-4 overflow-hidden"
-      placeholder="Share your voice with the world! Tell your story, reflect on your journey, or explore new ideas. What do you feel like writing today?"
+    <quill-editor
+      id="quillContentEditor"
+      #quillContentEditor
+      (onEditorCreated)="onEditorCreated($event)"
+      (onContentChanged)="onContentChanged($event)"
       [(ngModel)]="content"
-      #textAreaRef
-      (input)="autoResize(textAreaRef)"
-      rows="1"
+      [style]="{ minHeight: '16rem' }"
+      class="mt-4 rounded-xl text-black dark:text-white w-full"
+      [modules]="quillModules"
+      placeholder="Share your voice with the world! Tell your story, reflect on your journey, or explore new ideas."
+    >
+    </quill-editor>
+    <p class="flex gap-3 items-center mb-4 mt-8">
+      <img
+        src="/pen.svg"
+        alt="summary"
+        class="w-6 bg-blue-100/80 rounded-full p-0.5"
+      />
+      <span class="text-[15px] font-semibold inter">Summary</span>
+      <span
+        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[12px] mono dark:bg-gray-200/40 bg-gray-400/30"
+        >Max 150 characters</span
+      >
+      <span
+        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[12px] mono dark:bg-gray-200/40 bg-gray-400/30"
+        >Optional</span
+      >
+    </p>
+    <textarea
+      [(ngModel)]="summary"
+      name="summary"
+      maxlength="150"
+      class="w-full border-gray-300/60 dark:border-gray-600/60 placeholder-gray-500 border-2 rounded-xl p-3 text-sm xs:text-base resize-none focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+      placeholder="Write a short summary for your blog..."
+      (input)="autoResizeSummary($event.target)"
+      rows="2"
+      style="min-height: 2.5rem; max-height: 8rem"
     ></textarea>
     <div
       class="bg-[#4e1e4e]/40 dark:bg-gray-300/40 w-full h-0.5 mt-6 opacity-75"
     ></div>
     <div
-      class="flex justify-between items-center w-full sans font-medium my-12"
+      class="flex flex-col sm:flex-row justify-between items-center w-full sans font-medium my-8 sm:my-12 gap-4 sm:gap-0"
     >
-      <p class="flex gap-2.5 text-[16px]">
+      <p
+        class="flex flex-col sm:flex-row gap-2.5 text-sm xs:text-[15px] sm:text-[16px] text-center sm:text-left"
+        [ngClass]="
+          !isFormValid
+            ? 'text-red-600 font-bold'
+            : 'text-gray-600 dark:text-gray-300/80'
+        "
+      >
         Hold on!
         <span
           class="text-[#8e1e8e]/70 focus:outline-none font-semibold dark:text-blue-200 inter"
@@ -148,19 +198,56 @@
         >
       </p>
       <button
-        class="bg-blue-300 text-[#1e1e1e] font-semibold text-xl p-3 rounded-2xl shadow-lg"
+        (click)="createBlog()"
+        class="bg-blue-300 text-[#1e1e1e] font-semibold text-base xs:text-lg sm:text-xl p-2 xs:p-3 rounded-2xl shadow-lg"
+        [disabled]="!isFormValid"
+        [ngClass]="
+          !isFormValid ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+        "
       >
-        Release Story
-      </button>
+        {{ isEditMode ? "Update Blog" : "Release Story" }}</button
+      >
     </div>
   </section>
-  <section class="py-8 px-5 max-w-5xl rounded-2xl mx-auto bg-blue-100/70 dark:bg-blue-500/10 border-[#8e1e8e] font-medium border mb-[10vh]">
-    <h3 class="text-[#8e1e8e]/80 font-semibold display mb-3 text-xl dark:text-blue-200">Scribbling Tips</h3>
-    <ul>
-      <li class="list-disc ml-5 list-blue-500">Choose the right category to help readers find your content</li>
-      <li class="list-disc ml-5 list-blue-500">Start with a compelling title that captures your main idea</li>
-      <li class="list-disc ml-5 list-blue-500">Use clear, concise language and break up long paragraphs</li>
-      <li class="list-disc ml-5 list-blue-500">Add a relevant image to make your article more engaging</li>
+  <section
+    class="py-6 xs:py-8 px-2 xs:px-3 sm:px-5 max-w-5xl rounded-2xl mx-[4vw] lg:mx-auto bg-blue-100/70 dark:bg-blue-500/10 border-[#8e1e8e] font-medium border mb-[10vh]"
+  >
+    <h3
+      class="text-[#8e1e8e]/80 font-semibold display mb-2 xs:mb-3 text-base xs:text-lg sm:text-xl dark:text-blue-200"
+    >
+      Scribbling Tips
+    </h3>
+    <ul class="inter tracking-wide">
+      <li class="list-disc ml-5 list-blue-500 text-xs xs:text-sm">
+        Choose the right category to help readers find your content
+      </li>
+      <li class="list-disc ml-5 list-blue-500 text-xs xs:text-sm">
+        Start with a compelling title that captures your main idea
+      </li>
+      <li class="list-disc ml-5 list-blue-500 text-xs xs:text-sm">
+        Use clear, concise language and break up long paragraphs
+      </li>
+      <li class="list-disc ml-5 list-blue-500 text-xs xs:text-sm">
+        Add a relevant image to make your article more engaging
+      </li>
     </ul>
   </section>
+  @if(successMessage){
+  <section
+    class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white dark:bg-[#222831] shadow-lg rounded-2xl px-4 xs:px-6 py-6 xs:py-8 z-[999] w-[96vw] xs:w-[90vw] max-w-md text-center"
+  >
+    <h3 class="text-xl xs:text-2xl font-bold mb-2">{{ successMessage }}</h3>
+    <p
+      (click)="successMessage = ''"
+      class="mb-4 text-sm cursor-pointer xs:text-base"
+    >
+      Want to write another blog?
+    </p>
+    <a
+      routerLink="/blogs"
+      class="inline-block px-3 xs:px-4 py-2 bg-blue-300 text-[#1e1e1e] rounded-xl font-semibold hover:bg-blue-400 transition text-sm xs:text-base"
+      >Go to Blogs</a
+    >
+  </section>
+  }
 </main>

@@ -1,0 +1,11 @@
+<quill-editor
+  id="title"
+  #quillTitleEditor
+  [(ngModel)]="quillTitle"
+  (onContentChanged)="onContentChanged($event)"
+  (onEditorCreated)="onEditorCreated($event)"
+  [modules]="quillModulesTitle"
+  [placeholder]="'Enter your story title'"
+  [style]="{ height: '64px' }"
+  class="w-full text-[#000000]/80 dark:text-[#ffffff]/80 text-2xl sm:text-3xl font-medium placeholder-[#8e1e8e]/70! focus:outline-none dark:placeholder-blue-200! border-0!"
+/>

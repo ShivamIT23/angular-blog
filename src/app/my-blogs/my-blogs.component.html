@@ -1,0 +1,106 @@
+<main class="mt-20">
+  <section class="flex flex-col xxs:flex-row items-center gap-4 px-[4vw] sm:px-[5vw] py-4">
+    <div class="flex w-full items-center justify-between gap-4">
+      <h3
+        class="text-3xl sm:text-4xl font-bold display text-blue-600 dark:text-blue-300 text-shadow-md dark:text-shadow-amber-500/30"
+      >
+        My-<span class="">Blogs</span>
+      </h3>
+      <button
+        (click)="refreshBlogs()"
+        class="dark:bg-[#1eeeee]/60 w-fit bg-[#ccccce]/80 text-[#112384] dark:text-[#F5E8D8] hover:text-shadow-2xl text-shadow-md hover:scale-105 transition-all duration-300 font-bold mono px-4 py-2 rounded-md sm:w-auto"
+      >
+        Refresh
+      </button>
+    </div>
+    <div class="flex items-center mono">
+      <p
+        class="text-sm sm:text-base font-semibold text-gray-500 dark:text-gray-300"
+      >
+        {{ blogs.length }}/50
+      </p>
+    </div>
+  </section>
+  <section
+    class="grid grid-cols-1 sm:grid-cols-2 w-full px-[4vw] sm:px-[3%] max-w-6xl sm:mx-auto justify-center gap-4 sm:gap-6"
+  >
+    @for (post of blogs; track post.id) {
+    <div
+      class="flex flex-col-reverse gap-1 justify-between bg-white/70 dark:bg-[#141414]/80 rounded-2xl shadow-md p-3 sm:p-6 hover:shadow-lg transition h-fit"
+    >
+      <div class="flex-1 pr-0 sm:pr-4 @container">
+        <p
+          class="text-xs sm:text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-3 sm:px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 my-2 sm:my-4"
+        >
+          {{ post.category }}
+        </p>
+        <div
+          class="flex items-center gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300 mb-2 sm:mb-3"
+        >
+          <img
+            [src]="post.owner_photo"
+            alt="{{ post.owner_name }}"
+            class="w-5 h-5 rounded-full"
+          />
+          <span class="dark:text-gray-200">{{ post.owner_name }}</span>
+          <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+            >•</span
+          >
+          <span class="flex max-xxs:hidden dark:text-gray-200">{{
+            post.date
+          }}</span>
+          <span class="flex max-xxs:hidden text-gray-300 dark:text-gray-500"
+            >•</span
+          >
+          <span class="flex max-xxs:hidden dark:text-gray-200">{{
+            post.readTime
+          }}</span>
+        </div>
+        <div
+          class="hidden max-xxs:flex items-center gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300 mb-2 sm:mb-3"
+        >
+          <span class="text-gray-300 dark:text-gray-500">•</span>
+          <span class="dark:text-gray-200">{{ post.date }}</span>
+          <span class="text-gray-300 dark:text-gray-500">•</span>
+          <span class="dark:text-gray-200">{{ post.readTime }}</span>
+        </div>
+        <h2
+          class="text-lg sm:text-xl font-semibold display text-gray-800 dark:text-gray-100 mb-1.5"
+        >
+          <div [innerHTML]="post.safeTitle" class="text-gray-800 break-words max-w-full dark:text-gray-200 text-base sm:text-xl space-y-1 whitespace-normal text-wrap"></div>
+        </h2>
+        <p
+          class="text-gray-600/85 dark:text-gray-300 mb-2 sm:mb-3 line-clamp-3 @md:line-clamp-2 text-[15px] sm:text-[16px]"
+        >
+          {{ post.summary }}
+        </p>
+        <a
+          [routerLink]="['/blog', post.id]"
+          class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-xs sm:text-sm"
+        >
+          Read more →
+        </a>
+        <div class="text-xs sm:text-sm text-gray-400 dark:text-gray-500 mt-2">
+          ❤️ {{ post.likes }}
+        </div>
+      </div>
+      <img
+        [src]="post.mainImage"
+        alt="{{ post.title }}"
+        class="w-full h-32 sm:w-auto sm:h-44 aspect-video my-auto object-cover rounded-xl"
+      />
+    </div>
+    }
+  </section>
+  <section
+    [ngClass]="{
+      hidden: !loading,
+      'flex justify-center items-center': loading
+    }"
+    class="absolute w-full h-full backdrop-blur-xl z-50 top-0 left-0"
+  >
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 dark:border-white"
+    ></div>
+  </section>
+</main>

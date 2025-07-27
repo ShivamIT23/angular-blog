@@ -52,3 +52,48 @@ p, label, input{
 a{
   font-family: 'DM Sans', sans-serif;
 }
+
+body.dark #title .ql-editor::before {
+  color: #bfdbfe !important; /* Tailwind's blue-200 */
+}
+
+body.dark #quillContentEditor .ql-editor::before {
+  color: #bfdbfe !important; /* Tailwind's blue-200 */
+}
+
+body.dark #title .ql-editor {
+  border-bottom: 2px solid #d1d5dc40 !important;
+}
+
+body.dark .ql-toolbar svg path {
+  stroke :#EEEEEE !important;
+}
+
+body.dark .ql-toolbar svg line {
+  stroke :#EEEEEE !important;
+}
+
+body.dark .ql-toolbar svg {
+  stroke :#EEEEEE !important;
+}
+
+body.dark .ql-toolbar svg polyline {
+  stroke :#EEEEEE !important;
+}
+
+body.dark .ql-toolbar svg polygon {
+  stroke :#EEEEEE !important;
+}
+
+body.dark .ql-picker-label::before {
+  color :#bbbbbb !important;
+}
+
+body.dark .ql-toolbar svg rect {
+  stroke :#bbbbbb !important;
+}
+
+body.dark #quillContentEditor .ql-toolbar {
+  background: #222831 !important;
+  border-color: #444 !important;
+}

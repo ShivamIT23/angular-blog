@@ -1,0 +1,11 @@
+::ng-deep #readOnlyTitle .ql-container {
+  border: none !important;
+}
+
+::ng-deep #readOnlyTitle .ql-editor {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0 !important;
+  margin-bottom: 0.5rem;
+}

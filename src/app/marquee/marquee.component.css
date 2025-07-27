@@ -42,3 +42,28 @@
     transform: translateX(0%);
   }
 }
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .marquee-track,
+  .marquee-track-reverse {
+    gap: 0.75rem;
+    min-width: 120%;
+  }
+  @keyframes scroll-loop {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-30%);
+    }
+  }
+  @keyframes scroll-marquee-reverse {
+    0% {
+      transform: translateX(-30%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}

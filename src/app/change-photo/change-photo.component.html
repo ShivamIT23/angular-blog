@@ -1,0 +1,128 @@
+<main class="grid grid-cols-1 md:grid-cols-2 w-full h-fit">
+  <section
+    class="bg-[#00ADB5] w-full shadow-2xl flex items-center justify-center min-h-[40vh] md:min-h-screen relative"
+  >
+    <img
+      src="/skull-move.svg"
+      alt="register"
+      class="h-48 xs:h-64 sm:h-[60vh] md:h-[90vh] aspect-square drop-shadow-2xl max-w-full"
+    />
+  </section>
+  <section
+    class="min-h-scree h-fit py-10 sm:py-20 flex flex-col justify-center gap-8 items-center"
+  >
+    <div
+      class="w-[98%] xs:w-[90%] relative max-w-xl mx-auto min-h-[60vh] sm:min-h-[70vh] h-fit rounded-xl overflow-hidden shadow-xl"
+    >
+      <div
+        class="absolute top-0 left-0 h-2 w-full bg-gradient-to-r [background-image:linear-gradient(to_right,_#00ADB5_0%,_#00ADB5_75%,_#00ADB5_80%,_#FF6F61_85%,_#FF6F61_100%)]"
+      ></div>
+      <div
+        class="bg-[#F2F2F2] text-[#2F2F36] dark:text-[#F2F2F2] min-h-[60vh] sm:min-h-[70vh] h-fit dark:bg-[#2F2F36] rounded-b-xl p-4 sm:p-6 flex flex-col items-center justify-center"
+      >
+        <div>
+          <h3
+            class="w-full flex justify-center mb-6 sm:mb-8 text-[#00ADB5] text-xl sm:text-2xl font-bold"
+          >
+            Soul<span class="text-[#FF6F61]">Script</span>
+          </h3>
+          <h3 class="w-full flex justify-center text-2xl sm:text-3xl mb-2 font-bold">
+            Change Profile Photo
+          </h3>
+          <p class="text-center text-xs sm:text-sm font-medium opacity-50">
+            Change your profile photo to match your vibes more
+          </p>
+        </div>
+        <form
+          class="my-6 sm:my-10 px-2 sm:px-[10%] gap-3 w-full flex justify-center items-start flex-col"
+          (ngSubmit)="onChangePhoto()"
+          #changePhotoForm="ngForm"
+          enctype="multipart/form-data"
+        >
+          <label for="photo" class="font-semibold text-sm sm:text-base">Photo:</label>
+          <div class="w-full h-fit relative rounded-lg">
+            <div
+              class="relative w-full h-fit border-2 border-gray-300/60 dark:border-gray-600/60 rounded-lg shadow-lg"
+            >
+              <input
+                type="file"
+                name="image"
+                (change)="onFileSelected($event)"
+                class="w-full placeholder-gray-500 rounded-lg h-11 opacity-0 p-1.5 pl-8"
+              />
+              <div
+                class="absolute top-0 left-0 transition-all duration-300 pointer-events-none flex justify-center items-center w-full h-8 m-1.5 font-semibold opacity-85 text-xs sm:text-base"
+              >
+                @if(!photo){
+                <p>Upload Photo</p>
+                } @else{
+                <p>Change Photo</p>
+                }
+              </div>
+            </div>
+            <div
+              class="absolute top-1/2 -translate-y-1/2 transition-all duration-300 left-2 pointer-events-none"
+            >
+              <img src="/image.svg" alt="p" class="w-5" />
+            </div>
+          </div>
+          <div class="flex flex-col xs:flex-row justify-evenly w-full mt-4 gap-4 xs:gap-0">
+            <div class="flex flex-col items-center gap-2">
+              <img
+                [src]="previousPhoto"
+                alt="previousPhoto"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-full"
+              />
+              <p class="text-center display font-semibold opacity-85 text-xs sm:text-base">
+                Old Photo
+              </p>
+            </div>
+            @if(photoPreview){
+            <div class="flex flex-col items-center gap-2">
+              <img
+                [src]="photoPreview"
+                alt="photo"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-full"
+              />
+              <p class="text-center display font-semibold opacity-85 text-xs sm:text-base">
+                New Photo
+              </p>
+            </div>
+            }
+          </div>
+          <button
+            [ngClass]="
+              photo
+                ? ''
+                : 'opacity-50 cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowed'
+            "
+            class="bg-[#00ADB5] drop-shadow-md text-shadow-3xl dark:text-[#2F2F36] text-[#F2F2F2] w-full text-lg sm:text-xl font-bold shadow-xl rounded-xl p-1.5 mt-4 cursor-pointer hover:shadow-2xl hover:text-xl"
+            type="submit"
+          >
+            Change Photo
+          </button>
+          <!-- Success/Error Messages -->
+          @if(successMessage){
+          <div class="text-green-600 font-medium mt-2 text-xs sm:text-base">
+            {{ successMessage }}
+          </div>
+          } @if(errorMessage){
+          <div class="text-red-600 font-medium mt-2 text-xs sm:text-base">
+            {{ errorMessage }}
+          </div>
+          }
+        </form>
+        <p class="font-medium text-xs sm:text-base">
+          Changed Your Mind? Go To
+          <a routerLink="/" class="text-[#FF6F61] hover:underline text-base sm:text-lg"> Home</a>
+        </p>
+      </div>
+    </div>
+    <p class="font-semibold text-shadow-2xs px-2 sm:px-4 text-xs sm:text-base text-center">
+      By continuing, you're cool with our
+      <a routerLink="" class="text-[#FF6F61] hover:underline">[Terms of Service]</a>
+      and
+      <a routerLink="" class="text-[#FF6F61] hover:underline">[Privacy Policy]</a>.
+    </p>
+  </section>
+</main>

@@ -1,0 +1,70 @@
+::ng-deep [innerHTML] ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+::ng-deep [innerHTML] ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+::ng-deep [innerHTML] li {
+  margin-bottom: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: initial !important;
+}
+
+::ng-deep #readOnlyContent .ql-container {
+  border: none !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor {
+  font-family: 'Caveat', cursive;
+  font-size: 1.45em !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor p {
+  font-size: 1.05em !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor h2 {
+  font-size: 1.45em !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor h1 {
+  font-size: 1.75em !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor h3 {
+  font-size: 1.25em !important;
+  line-height: 1.7 !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor li {
+  font-size: 1.15em !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor ol,
+ul {
+  margin-bottom: 1.5rem !important;
+}
+
+::ng-deep #readOnlyContent .ql-editor blockquote {
+  font-size: 1.35em !important;
+  font-style: italic !important;
+  font-family:'Playfair Display', serif;
+  margin-bottom: 0.5rem !important;
+  border-left: 4px solid #FF6F61 !important;
+  padding-left: 1rem !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}

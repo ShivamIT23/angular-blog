@@ -3,25 +3,27 @@ import Lenis from '@studio-freight/lenis';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeService, Theme } from './theme.service';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    NavbarComponent
-  ],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   private lenis!: Lenis;
   private rafId: number = 0;
   theme: Theme = 'light';
 
-  constructor(private themeService: ThemeService) {
-    this.themeService.theme$.subscribe(theme => {
+  constructor(
+    private themeService: ThemeService,
+    private usersService: UsersService
+  ) {
+    this.themeService.theme$.subscribe((theme) => {
       this.theme = theme;
     });
+    this.usersService.confirmUser();
   }
 
   toggleTheme() {
@@ -44,6 +46,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     cancelAnimationFrame(this.rafId);
-    this.lenis.destroy();  // Clean up
+    this.lenis.destroy(); // Clean up
   }
 }

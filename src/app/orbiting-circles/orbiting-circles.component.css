@@ -4,18 +4,34 @@
     height: 0;
     animation: spin infinite linear;
     transform-origin: center;
-  }
-  
-  .orbiting-container.reverse {
+    max-width: 100vw;
+    max-height: 100vw;
+}
+
+.orbiting-container.reverse {
     animation-direction: reverse;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     from {
       transform: rotate(0deg);
     }
     to {
       transform: rotate(360deg);
     }
+}
+
+/* Responsive: adjust icon size and orbit for small screens */
+@media (max-width: 640px) {
+  .orbiting-container {
+    max-width: 90vw;
+    max-height: 90vw;
   }
+}
+@media (max-width: 400px) {
+  .orbiting-container {
+    max-width: 80vw;
+    max-height: 80vw;
+  }
+}
   

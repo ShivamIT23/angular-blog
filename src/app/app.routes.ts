@@ -5,178 +5,143 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { AuthGuard } from './auth.guard'; // adjust path if needed
+import { ChangePhotoComponent } from './change-photo/change-photo.component';
 
-export const blogPosts = [
+export const categoryList = [
   {
-    id: 1,
-    category: 'Food',
-    author: 'Shivam',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p3img_r9qqsr.jpg',
-    date: 'Jun 5, 2025',
-    readTime: '1 min read',
-    title: 'Fermentation Is the Future of Healthy Eating',
-    summary:
-      'Kombucha, kimchi, sourdough—fermented foods are having a moment. Beyond their tangy flavors, these foods are packed with probiotics that support gut h…',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399518/food1_moanwe.jpg',
-    likes: 1,
+    name: 'All',
+    icon: '',
+    color: 'bg-blue-200 dark:bg-blue-400/40',
+    hover: '',
+    textColor: 'text-blue-900 dark:text-blue-100',
   },
   {
-    id: 2,
-    category: 'Technology',
-    author: 'Ananya',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p2img_tytic0.jpg',
-    date: 'May 21, 2025',
-    readTime: '2 min read',
-    title: 'Why AI Assistants Are Revolutionizing Workflows',
-    summary:
-      'From content generation to scheduling, AI assistants are helping streamline productivity like never before. Here’s how businesses are adapting to thi…',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399518/technology_z3uzsg.jpg',
-    likes: 8,
+    name: 'Business',
+    icon: '💼',
+    color: 'bg-[#E0F7FA] dark:bg-[#004D4D60]',
+    hover: 'hover:bg-[#E8FBFD] dark:hover:bg-[#004D4D80]',
+    textColor: 'text-[#004D4D] dark:text-[#B2EBF2]',
   },
   {
-    id: 3,
-    category: 'Health',
-    author: 'Ravi',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p1img_hctcqk.jpg',
-    date: 'Jul 1, 2025',
-    readTime: '3 min read',
-    title: '5 Breathing Techniques to Instantly Reduce Stress',
-    summary:
-      'Harness the power of your breath to find calm. These science-backed techniques are easy to learn and can help ease anxiety in under a minute.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399517/health_f6jysd.jpg',
-    likes: 5,
+    name: 'Health',
+    icon: '🏥',
+    color: 'bg-[#FFFBEA] dark:bg-[#4E342E60]',
+    hover: 'hover:bg-[#FFF8E1] dark:hover:bg-[#4E342E80]',
+    textColor: 'text-[#795548] dark:text-[#FFF8E1]',
   },
   {
-    id: 4,
-    category: 'Finance',
-    author: 'Megha',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p3img_r9qqsr.jpg',
-    date: 'Apr 15, 2025',
-    readTime: '4 min read',
-    title: 'The 50/30/20 Rule: A Simple Way to Budget Your Income',
-    summary:
-      'Struggling to save? This budgeting method helps you divide your monthly income into needs, wants, and savings efficiently.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/finance_cvjstx.jpg',
-    likes: 12,
+    name: 'Lifestyle',
+    icon: '🌟',
+    color: 'bg-[#FDECF1] dark:bg-[#880E4F60]',
+    hover: 'hover:bg-[#FCE4EC] dark:hover:bg-[#880E4F80]',
+    textColor: 'text-[#880E4F] dark:text-[#F8BBD0]',
   },
   {
-    id: 5,
-    category: 'Travel',
-    author: 'Aditya',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p2img_tytic0.jpg',
-    date: 'Mar 18, 2025',
-    readTime: '2 min read',
-    title: 'Hidden Gems in the Himalayas You Need to Explore',
-    summary:
-      'Tired of overcrowded tourist spots? These lesser-known Himalayan villages offer peace, nature, and breathtaking beauty.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/travel_r57pso.jpg',
-    likes: 7,
+    name: 'Technology',
+    icon: '💻',
+    color: 'bg-[#F1FBF2] dark:bg-[#1B5E2060]',
+    hover: 'hover:bg-[#E8F5E9] dark:hover:bg-[#1B5E2080]',
+    textColor: 'text-[#1B5E20] dark:text-[#C8E6C9]',
   },
   {
-    id: 6,
-    category: 'Lifestyle',
-    author: 'Neha',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p1img_hctcqk.jpg',
-    date: 'Jun 25, 2025',
-    readTime: '1 min read',
-    title: 'Minimalism: Declutter Your Life and Mind',
-    summary:
-      'Living with less doesn’t mean sacrificing comfort. Discover how minimalism can help you focus on what truly matters.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/lifestyle_d3ofgl.jpg',
-    likes: 3,
+    name: 'Sports',
+    icon: '⚽',
+    color: 'bg-[#EDF7FE] dark:bg-[#0D47A160]',
+    hover: 'hover:bg-[#E3F2FD] dark:hover:bg-[#0D47A180]',
+    textColor: 'text-[#0D47A1] dark:text-[#BBDEFB]',
   },
   {
-    id: 7,
-    category: 'Education',
-    author: 'Tanmay',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p3img_r9qqsr.jpg',
-    date: 'May 10, 2025',
-    readTime: '3 min read',
-    title: 'Top Free Online Courses for Upskilling in 2025',
-    summary:
-      'Platforms like Coursera, edX, and Khan Academy are offering certifications in tech, business, and arts—all for free.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/education_jyfggg.jpg',
-    likes: 10,
+    name: 'Education',
+    icon: '📚',
+    color: 'bg-[#F8F0FB] dark:bg-[#4A148C60]',
+    hover: 'hover:bg-[#F3E5F5] dark:hover:bg-[#4A148C80]',
+    textColor: 'text-[#4A148C] dark:text-[#E1BEE7]',
   },
   {
-    id: 8,
-    category: 'Fitness',
-    author: 'Ritu',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p2img_tytic0.jpg',
-    date: 'Jun 30, 2025',
-    readTime: '2 min read',
-    title: 'How to Build a Sustainable Workout Routine',
-    summary:
-      'Fitness is more than a 30-day challenge. Learn how to create habits that stick for long-term health.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/fitness_kezxra.jpg',
-    likes: 6,
+    name: 'Food',
+    icon: '🍳',
+    color: 'bg-[#F7FBEC] dark:bg-[#33691E60]',
+    hover: 'hover:bg-[#F1F8E9] dark:hover:bg-[#33691E80]',
+    textColor: 'text-[#33691E] dark:text-[#DCEDC8]',
   },
   {
-    id: 9,
-    category: 'Environment',
-    author: 'Karan',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p1img_hctcqk.jpg',
-    date: 'Apr 22, 2025',
-    readTime: '2 min read',
-    title: 'How Urban Gardening Is Changing City Living',
-    summary:
-      'From rooftops to balconies, more people are growing their own food—cutting emissions and staying healthy.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399516/environment_lvrght.jpg',
-    likes: 4,
+    name: 'Entertainment',
+    icon: '🎭',
+    color: 'bg-[#FFF9F0] dark:bg-[#E6510060]',
+    hover: 'hover:bg-[#FFF3E0] dark:hover:bg-[#E6510080]',
+    textColor: 'text-[#E65100] dark:text-[#FFE0B2]',
   },
   {
-    id: 10,
-    category: 'Business',
-    author: 'Sakshi',
-    authorPhoto:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/w_30/v1752399063/p3img_r9qqsr.jpg',
-    date: 'May 5, 2025',
-    readTime: '3 min read',
-    title: 'Startup Trends That Will Dominate 2025',
-    summary:
-      'AI, green tech, and remote-first companies are leading the charge. Here’s what investors are watching.',
-    mainImage:
-      'https://res.cloudinary.com/dlovcfdar/image/upload/v1752399515/business_zzx4wx.jpg',
-    likes: 11,
+    name: 'Travel',
+    icon: '✈️',
+    color: 'bg-[#F2F0FA] dark:bg-[#1A237E60]',
+    hover: 'hover:bg-[#EDE7F6] dark:hover:bg-[#1A237E80]',
+    textColor: 'text-[#1A237E] dark:text-[#C5CAE9]',
+  },
+  {
+    name: 'Finance',
+    icon: '💰',
+    color: 'bg-[#FFF9DB] dark:bg-[#8D6E6360]',
+    hover: 'hover:bg-[#FFF4BF] dark:hover:bg-[#8D6E6380]',
+    textColor: 'text-[#5D4037] dark:text-[#FFE082]',
+  },
+  {
+    name: 'Fitness',
+    icon: '🏋️‍♂️',
+    color: 'bg-[#FFEFEA] dark:bg-[#BF360C60]',
+    hover: 'hover:bg-[#FFE3DB] dark:hover:bg-[#BF360C80]',
+    textColor: 'text-[#BF360C] dark:text-[#FFCCBC]',
+  },
+  {
+    name: 'Environment',
+    icon: '🌱',
+    color: 'bg-[#F6FBEA] dark:bg-[#3E4C1F60]',
+    hover: 'hover:bg-[#EEF7D5] dark:hover:bg-[#3E4C1F80]',
+    textColor: 'text-[#3E4C1F] dark:text-[#DCE775]',
+  },
+  {
+    name: 'General',
+    icon: '📝',
+    color: 'bg-[#E0E0E0] dark:bg-[#2A2E3280]',
+    hover: 'hover:bg-[#D1D1D1] dark:hover:bg-[#2A2E32]',
+    textColor: 'text-[#212121] dark:text-[#CFD8DC]',
   },
 ];
-
-function singleBlog(id:number){
-  return blogPosts.find((blog)=> blog.id == id)
-}
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'create', component: CreateComponent },
+  { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
+  {
+    path: 'create/:id',
+    component: CreateComponent,
+    // canActivate: [AuthGuard], // Uncomment if you want to protect this route
+  },
   {
     path: 'blog/:id',
-    loadComponent: () => import('./blog-details/blog-details.component').then((c) => c.BlogDetailsComponent),
+    loadComponent: () =>
+      import('./blog-details/blog-details.component').then(
+        (c) => c.BlogDetailsComponent
+      ),
   },
   {
     path: 'admin',
     loadComponent: () =>
       import('./admin/admin.component').then((c) => c.AdminComponent),
   },
-  { path: 'blogs', component: BlogsComponent, data: { blogPosts } },
+  {
+    path: 'my-blogs',
+    loadComponent: () =>
+      import('./my-blogs/my-blogs.component').then((c) => c.MyBlogsComponent),
+    canActivate: [AuthGuard],
+  },
+  { path: 'blogs', component: BlogsComponent },
+  {
+    path: 'change-photo',
+    component: ChangePhotoComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: NotFoundComponent },
 ];
