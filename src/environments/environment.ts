@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  backendUrl: 'https://www.blog.shivam23.me'
+  backendUrl: 'http://127.0.0.1:8000'
 };

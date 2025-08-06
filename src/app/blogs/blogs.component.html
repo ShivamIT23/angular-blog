@@ -89,10 +89,10 @@
       <p class="text-xs sm:text-sm font-medium sans">Categories:</p>
       @for(category of categoryList; track category.name){
       <span
-        class="rounded-xl font-thin px-1.5 py-0.5 text-[#121212] dark:text-gray-100 text-[11px] sm:text-[12px] mono cursor-pointer"
+        class="rounded-xl px-1.5 py-0.5 font-medium text-[11px] sm:text-[12px] mono cursor-pointer"
         [ngClass]="
-          selectedCategory === category.name
-            ? category.color
+          selectedCategory.name === category.name
+            ? selectedCategory.color + ' ' + selectedCategory.textColor
             : 'dark:bg-gray-200/40 bg-gray-400/30'
         "
         (click)="selectCategory(category.name)"
@@ -102,7 +102,7 @@
     </div>
     <button
       (click)="refresh()"
-      class="bg-blue-100/80 h-fit ml-2 cursor-pointer text-blue-800 text-base sm:text-lg font-bold hand px-1.5 py-0.5 rounded-xl"
+      class="bg-gray-400/30 dark:bg-gray-600/40 h-fit ml-2 cursor-pointer text-[#FF6F61] dark:text-[#ff9891] text-base sm:text-lg font-bold hand px-1.5 py-0.5 rounded-xl"
     >
       Refresh
     </button>
@@ -123,7 +123,8 @@
     >
       <div class="flex-1 pr-0 md:pr-4 @container">
         <p
-          class="text-xs sm:text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-3 sm:px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 mb-2 sm:mb-4"
+          class="text-xs sm:text-sm mono px-3 sm:px-4 py-1 rounded-xl w-fit  mb-2 sm:mb-4"
+          [ngClass]="getCategoryClasses(post.category)"
         >
           {{ post.category }}
         </p>
@@ -169,7 +170,7 @@
         </p>
         <a
           [routerLink]="['/blog', post.id]"
-          class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-xs sm:text-sm"
+          class="text-[#FF6F61] dark:text-[#f88d83] font-semibold hover:underline text-xs sm:text-sm"
         >
           Read more →
         </a>
@@ -217,7 +218,7 @@
           class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg border text-sm font-medium transition-colors"
           [ngClass]="
             currentPage === page
-              ? 'bg-blue-600 border-blue-600 text-white'
+              ? 'bg-[#FF6F61] border-[#b9382c] text-white'
               : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
           "
           [attr.aria-label]="'Page ' + page"
@@ -253,7 +254,7 @@
   <div class="text-center text-sm text-gray-600 dark:text-gray-400 mb-8">
     Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to {{ totalBlogs }} of {{ hasMorePages ? 'many' : totalBlogs }} results
     @if(hasMorePages){
-      <span class="text-blue-600 dark:text-blue-400"> • More pages available</span>
+      <span class="text-[#FF6F61] dark:text-[#f88d83]"> • More pages available</span>
     }
   </div>
   }

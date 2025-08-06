@@ -2,13 +2,13 @@
   <section class="flex flex-col xxs:flex-row items-center gap-4 px-[4vw] sm:px-[5vw] py-4">
     <div class="flex w-full items-center justify-between gap-4">
       <h3
-        class="text-3xl sm:text-4xl font-bold display text-blue-600 dark:text-blue-300 text-shadow-md dark:text-shadow-amber-500/30"
+        class="text-3xl sm:text-4xl font-bold display text-[#00ADB5] dark:text-[#7ae2e7] text-shadow-md dark:text-shadow-amber-500/30"
       >
         My-<span class="">Blogs</span>
       </h3>
       <button
         (click)="refreshBlogs()"
-        class="dark:bg-[#1eeeee]/60 w-fit bg-[#ccccce]/80 text-[#112384] dark:text-[#F5E8D8] hover:text-shadow-2xl text-shadow-md hover:scale-105 transition-all duration-300 font-bold mono px-4 py-2 rounded-md sm:w-auto"
+        class="dark:bg-[#FF6F61]/60 w-fit bg-[#ccccce]/80 text-[#ee5041] dark:text-[#F5E8D8] hover:text-shadow-xl text-shadow-sm hover:scale-105 transition-all duration-300 font-bold mono px-4 py-2 rounded-md sm:w-auto"
       >
         Refresh
       </button>
@@ -30,7 +30,8 @@
     >
       <div class="flex-1 pr-0 sm:pr-4 @container">
         <p
-          class="text-xs sm:text-sm mono bg-gray-200/40 dark:bg-gray-700/40 px-3 sm:px-4 py-1 rounded-xl w-fit text-[#121212] dark:text-gray-100 my-2 sm:my-4"
+          class="text-xs sm:text-sm mono px-3 sm:px-4 py-1 rounded-xl w-fit my-2 sm:my-4"
+          [ngClass]="getCategoryClasses(post.category)"
         >
           {{ post.category }}
         </p>
@@ -76,7 +77,7 @@
         </p>
         <a
           [routerLink]="['/blog', post.id]"
-          class="text-blue-600 dark:text-blue-400 font-semibold hover:underline text-xs sm:text-sm"
+          class="text-[#FF6F61] dark:text-[#f88d83] font-semibold hover:underline text-xs sm:text-sm"
         >
           Read more →
         </a>

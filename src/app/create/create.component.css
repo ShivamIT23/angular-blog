@@ -61,8 +61,8 @@
 }
 
 ::ng-deep #quillContentEditor .ql-editor::before {
-  color: rgba(142, 30, 142, 0.7); /* light mode */
-  font-family: "Playfair Display", serif !important;
+  color: rgba(255, 111, 97); /* light mode */
+  font-family: "Inter", serif !important;
   padding: 10px 10px 0 10px !important;
   font-style: normal !important;
   line-height: 1.2 !important;

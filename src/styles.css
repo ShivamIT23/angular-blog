@@ -22,9 +22,10 @@ body {
   background: var(--background);
   color: var(--text);
   transition: background 0.5s, color 0.3s;
+  font-family: 'Inter', sans-serif;
 }
 
-.display{
+/* .display{
   font-family: 'Playfair Display', serif;
   line-height: 1.2;
 }
@@ -43,22 +44,24 @@ body {
 
 .sans{
   font-family: 'DM Sans', sans-serif;
-}
+} */
 
-p, label, input{
+/* p, label, input{
   font-family: 'Inter', sans-serif;
-}
+} */
 
-a{
+/* a{
   font-family: 'DM Sans', sans-serif;
-}
+} */
 
 body.dark #title .ql-editor::before {
-  color: #bfdbfe !important; /* Tailwind's blue-200 */
+  color: #39c2c9 !important; /* Tailwind's blue-200 */
+  font-family: 'Inter', serif !important;
 }
 
 body.dark #quillContentEditor .ql-editor::before {
-  color: #bfdbfe !important; /* Tailwind's blue-200 */
+  color: #39c2c9 !important; /* Tailwind's blue-200 */
+  font-family: 'Inter', serif !important;
 }
 
 body.dark #title .ql-editor {

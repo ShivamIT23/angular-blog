@@ -145,7 +145,9 @@ export class BlogsComponent implements OnInit, OnDestroy {
   }
 
   async selectCategory(category: string) {
-    this.selectedCategory = category;
+    console.log(category);
+    this.selectedCategory = categoryList.find(c => c.name === category) || categoryList[0];
+    console.log(this.selectedCategory);
     this.currentPage = 1; // Reset to first page when category changes
     // Clear page cache when category changes
     this.clearPageCache();
@@ -222,17 +224,25 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   categoryList = categoryList;
 
-  selectedCategory = 'All';
+  selectedCategory = categoryList[0];
 
   isInputFocused = false;
 
   get filteredBlogPosts() {
     // For server-side pagination, filtering should be handled by the API
     // This is now just a fallback for client-side filtering
-    const filtered = this.selectedCategory === 'All' 
+    const filtered = this.selectedCategory.name === 'All' 
       ? this.allBlogs 
-      : this.allBlogs.filter((post) => post.category === this.selectedCategory);
+      : this.allBlogs.filter((post) => post.category === this.selectedCategory.name);
     
     return filtered;
+  }
+
+  getCategoryClasses(category: string): string {
+    const categoryItem = this.categoryList.find((c) => c.name === category);
+    if (categoryItem) {
+      return `${categoryItem.color} ${categoryItem.textColor}`;
+    }
+    return '';
   }
 }

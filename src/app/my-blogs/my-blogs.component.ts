@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { categoryList } from '../app.routes';
 
 @Component({
   selector: 'app-my-blogs',
@@ -44,5 +45,15 @@ export class MyBlogsComponent implements OnInit, OnDestroy {
     if (this.blogsSub) {
       this.blogsSub.unsubscribe();
     }
+  }
+
+  categoryList = categoryList;
+
+  getCategoryClasses(category: string): string {
+    const categoryItem = this.categoryList.find((c) => c.name === category);
+    if (categoryItem) {
+      return `${categoryItem.color} ${categoryItem.textColor}`;
+    }
+    return '';
   }
 }

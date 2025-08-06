@@ -19,6 +19,8 @@ export class ChangePhotoComponent implements OnDestroy {
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
+  loading = false;
+
   private subscriptions = new Subscription();
 
   constructor(private usersService: UsersService) {
@@ -47,6 +49,7 @@ export class ChangePhotoComponent implements OnDestroy {
       this.errorMessage = 'Please select a photo';
       return;
     }
+    this.loading = true;
     const formData = new FormData();
     formData.append('photo', this.photo);
     this.usersService
@@ -64,6 +67,7 @@ export class ChangePhotoComponent implements OnDestroy {
           err.error.detail || 'Something went wrong while uploading.';
       })
       .finally(() => {
+        this.loading = false;
         this.successMessage = '';
         this.errorMessage = '';
       });
